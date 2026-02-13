@@ -127,3 +127,88 @@ th {
     background: #ffe6f0;
 }
 
+body {
+    direction: rtl;
+    text-align: right;
+    font-family: "Vazirmatn", Tahoma, sans-serif;
+    background: #fdf6f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* هدینگ‌ها */
+h1 {
+    color: #d63384;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+h2 {
+    color: #e754a6;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+h3 {
+    color: #b03060;
+    margin-top: 25px;
+}
+
+/* پاراگراف */
+p {
+    margin: 15px 0;
+    line-height: 2.2;
+}
+
+/* لیست */
+ul {
+    margin: 15px 0;
+    padding-right: 25px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+/* خط جداکننده */
+hr {
+    border: none;
+    border-top: 1px solid #f3c1da;
+    margin: 30px 0;
+}
+
+/* نقل قول */
+blockquote {
+    background: #fff0f6;
+    border-right: 4px solid #e754a6;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+/* جدول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+}
+
+th, td {
+    border: 1px solid #f8c8dc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #ffe6f0;
+}
