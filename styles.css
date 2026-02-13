@@ -1,65 +1,86 @@
-body {
+/* ====== Base Reset ====== */
+* {
     margin: 0;
-    font-family: "Vazirmatn", sans-serif;
-    background: linear-gradient(135deg, #fce7f3, #f3f4f6);
-    color: #4b5563;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: "Vazirmatn", sans-serif;
+    background: linear-gradient(135deg, #ffe6f0, #f3f3f3);
+    color: #444;
+    line-height: 1.8;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ====== Container ====== */
 .container {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 20px;
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
     text-align: center;
 }
 
+/* ====== Title ====== */
 h1 {
-    font-size: 48px;
+    font-size: 36px;
+    color: #e754a6;
     margin-bottom: 10px;
-    color: #db2777;
 }
 
 .subtitle {
-    color: #9ca3af;
-    font-size: 18px;
-    margin-bottom: 40px;
+    color: #888;
+    margin-bottom: 30px;
+    font-size: 16px;
 }
 
+/* ====== Card ====== */
 .card {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(219, 39, 119, 0.15);
-    border: 1px solid #fbcfe8;
+    background: #fff0f6;
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
-h2 {
-    margin-bottom: 20px;
-    color: #be185d;
+.card h2 {
+    margin-bottom: 15px;
+    color: #d63384;
 }
 
+/* ====== List ====== */
 ul {
     list-style: none;
-    padding: 0;
 }
 
 li {
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 a {
     text-decoration: none;
-    color: #ec4899;
-    font-size: 18px;
-    transition: all 0.3s ease;
+    color: #555;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: 0.3s ease;
 }
 
 a:hover {
-    color: #be185d;
-    transform: scale(1.05);
+    background: #ffd6e8;
+    color: #c2185b;
+    transform: translateY(-3px);
 }
 
+/* ====== Footer ====== */
 footer {
-    margin-top: 50px;
-    color: #9ca3af;
+    margin-top: 30px;
     font-size: 14px;
+    color: #aaa;
 }
