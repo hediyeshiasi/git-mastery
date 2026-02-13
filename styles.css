@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&family=Inter:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+}
 
 :root {
   --bg-main: #fff7fb;
@@ -106,4 +110,48 @@ footer {
   text-align: center;
   margin-top: 50px;
   color: #999;
+}
+h1, h2, h3, h4 {
+  text-align: center;
+  font-weight: 800;
+  color: #c05a8f; /* صورتی تیره حرفه‌ای */
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #a14d78;
+}
+.note {
+  background: #fff4f9;
+  border-right: 6px solid #c05a8f;
+  padding: 18px 22px;
+  border-radius: 12px;
+  margin: 25px 0;
+  font-size: 15px;
+  line-height: 1.9;
+}
+.note-warning {
+  background: #fff8f0;
+  border-right: 6px solid #f4a261;
+}
+
+.note-success {
+  background: #f3fff7;
+  border-right: 6px solid #6abf9a;
 }
