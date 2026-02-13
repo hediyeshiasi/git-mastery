@@ -7,7 +7,7 @@ body {
   text-align: right;
   font-family: 'Vazirmatn', sans-serif;
   background: linear-gradient(135deg, #fff5f8, #f4f4f4);
-  color: #444;
+  color: #b5b1b1;
 }
 
 /* کارت اصلی */
@@ -61,7 +61,7 @@ li {
 hr {
   border: none;
   height: 2px;
-  background: #f8bbd0;
+  background: #fccbdc;
   margin: 40px 0;
   border-radius: 10px;
 }
@@ -77,7 +77,7 @@ ul li a {
   padding: 12px 28px;
   margin: 8px 0;
   background: #eeeeee;
-  color: #555;
+  color: #b9b8b8;
   border-radius: 15px;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -88,8 +88,8 @@ ul li a {
 /* افکت هاور */
 .button:hover,
 ul li a:hover {
-  background: #f8bbd0;
-  color: #880e4f;
+  background: #ffc9dc;
+  color: #a30057;
   transform: translateY(-4px);
   box-shadow: 
     0 10px 20px rgba(194,24,91,0.15);
