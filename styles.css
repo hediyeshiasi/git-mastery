@@ -1,65 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
+
 body {
-    margin: 0;
-    font-family: "Vazirmatn", sans-serif;
-    background: linear-gradient(135deg, #fce7f3, #f3f4f6);
-    color: #4b5563;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  text-align: right;
+  font-family: 'Vazirmatn', sans-serif;
+  background: linear-gradient(135deg, #fff5f8, #f4f4f4);
+  color: #444;
 }
 
+/* کارت اصلی */
 .container {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 20px;
-    text-align: center;
+  max-width: 900px;
+  margin: 70px auto;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+}
+
+/* هدینگ‌ها فقط وسط */
+h1, h2, h3 {
+  text-align: center;
+  color: #c2185b;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-    color: #db2777;
-}
-
-.subtitle {
-    color: #9ca3af;
-    font-size: 18px;
-    margin-bottom: 40px;
-}
-
-.card {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(219, 39, 119, 0.15);
-    border: 1px solid #fbcfe8;
+  font-size: 36px;
+  font-weight: 900;
 }
 
 h2 {
-    margin-bottom: 20px;
-    color: #be185d;
+  font-size: 26px;
+  font-weight: 700;
 }
 
+h3 {
+  font-size: 20px;
+}
+
+/* متن‌ها راست چین */
+p {
+  line-height: 2.2;
+  margin-bottom: 20px;
+}
+
+/* لیست‌ها */
 ul {
-    list-style: none;
-    padding: 0;
+  padding-right: 25px;
 }
 
 li {
-    margin: 15px 0;
+  margin-bottom: 12px;
 }
 
+/* جداکننده */
+hr {
+  border: none;
+  height: 2px;
+  background: #f8bbd0;
+  margin: 40px 0;
+  border-radius: 10px;
+}
+
+/* ✨ دکمه‌های فانتزی برجسته */
 a {
-    text-decoration: none;
-    color: #ec4899;
-    font-size: 18px;
-    transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-a:hover {
-    color: #be185d;
-    transform: scale(1.05);
+.button,
+ul li a {
+  display: inline-block;
+  padding: 12px 28px;
+  margin: 8px 0;
+  background: #eeeeee;
+  color: #555;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
-footer {
-    margin-top: 50px;
-    color: #9ca3af;
-    font-size: 14px;
+/* افکت هاور */
+.button:hover,
+ul li a:hover {
+  background: #f8bbd0;
+  color: #880e4f;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(194,24,91,0.15);
 }
