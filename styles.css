@@ -72,14 +72,14 @@ p {
 
 /* Fancy Buttons */
 button, .btn {
-  background: linear-gradient(45deg, #fa4a9f, #ffb6d9);
+  background: linear-gradient(45deg, #99084e, #c99ab0);
   border: none;
   padding: 12px 28px;
   border-radius: 50px;
   color: white;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(255, 135, 194, 0.4);
+  box-shadow: 0 5px 15px rgba(229, 178, 202, 0.952);
   transition: 0.3s ease;
 }
 
@@ -150,12 +150,12 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ffb6d9;
+  background: #f1bbd5;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c67b9f;
+  background: #e9b3cd;
 }
 
 /* Footer */
