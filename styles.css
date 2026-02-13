@@ -6,42 +6,31 @@ body {
   direction: rtl;
   text-align: right;
   font-family: 'Vazirmatn', sans-serif;
-  background: linear-gradient(135deg, #ffd6e8, #f3f3f3);
+  background: linear-gradient(135deg, #fff5f8, #f4f4f4);
   color: #444;
 }
 
-/* کارت اصلی سه بعدی */
+/* کارت اصلی */
 .container {
   max-width: 900px;
   margin: 70px auto;
   background: #ffffff;
   padding: 50px;
-  border-radius: 30px;
-  box-shadow:
-    0 20px 50px rgba(233, 30, 99, 0.15),
-    0 10px 20px rgba(0, 0, 0, 0.05);
-  transition: 0.4s ease;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
 }
 
-.container:hover {
-  transform: translateY(-5px);
-  box-shadow:
-    0 30px 70px rgba(233, 30, 99, 0.25),
-    0 15px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* فقط هدینگ‌ها وسط چین */
+/* هدینگ‌ها فقط وسط */
 h1, h2, h3 {
   text-align: center;
-  color: #d81b60;
+  color: #c2185b;
   margin-top: 50px;
   margin-bottom: 25px;
 }
 
 h1 {
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 900;
-  letter-spacing: 1px;
 }
 
 h2 {
@@ -51,88 +40,57 @@ h2 {
 
 h3 {
   font-size: 20px;
-  color: #ad1457;
 }
 
-/* متن‌ها راست چین بمونن */
+/* متن‌ها راست چین */
 p {
-  text-align: right;
   line-height: 2.2;
-  font-size: 16px;
   margin-bottom: 20px;
 }
 
 /* لیست‌ها */
 ul {
   padding-right: 25px;
-  margin-bottom: 30px;
 }
 
 li {
   margin-bottom: 12px;
 }
 
-/* جداکننده فانتزی */
+/* جداکننده */
 hr {
   border: none;
-  height: 3px;
-  background: linear-gradient(to left, #ff80ab, #f8bbd0);
-  margin: 50px 0;
-  border-radius: 20px;
-}
-
-/* جدول نرم و فانتزی */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 30px 0;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-th {
+  height: 2px;
   background: #f8bbd0;
-  padding: 15px;
-  color: #880e4f;
-  font-weight: bold;
+  margin: 40px 0;
+  border-radius: 10px;
 }
 
-td {
-  padding: 15px;
-  background: #fff;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-/* باکس نوت */
-.note-box {
-  background: #fff0f5;
-  padding: 25px;
-  border-radius: 20px;
-  border-right: 6px solid #e91e63;
-  box-shadow: 0 10px 25px rgba(233,30,99,0.1);
-  margin: 30px 0;
-}
-
-/* دکمه طوسی خیلی کمرنگ سه بعدی */
-.button {
-  display: inline-block;
-  padding: 14px 35px;
-  background: linear-gradient(145deg, #f0f0f0, #e6e6e6);
-  color: #919090;
+/* ✨ دکمه‌های مستطیل گوشه‌گرد برجسته */
+a {
   text-decoration: none;
-  border-radius: 50px;
-  font-weight: bold;
-  box-shadow:
-    5px 5px 15px #d1d1d1,
-    -5px -5px 15px #ffffff;
-  transition: 0.3s ease;
 }
 
-.button:hover {
+.button,
+ul li a {
+  display: inline-block;
+  padding: 12px 28px;
+  margin: 8px 0;
+  background: #eeeeee;
+  color: #555;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 6px 12px rgba(0,0,0,0.08);
+}
+
+/* افکت هاور */
+.button:hover,
+ul li a:hover {
+  background: #f8bbd0;
+  color: #880e4f;
   transform: translateY(-4px);
-  box-shadow:
-    8px 8px 20px #c9c9c9,
-    -8px -8px 20px #ffffff;
-  color: #d81b60;
+  box-shadow: 
+    0 10px 20px rgba(194,24,91,0.15);
 }
