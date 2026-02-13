@@ -1,65 +1,152 @@
+/* ===== Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700;900&display=swap');
+
+/* ===== Base ===== */
 body {
     margin: 0;
-    font-family: "Vazirmatn", sans-serif;
-    background: linear-gradient(135deg, #fce7f3, #f3f4f6);
-    color: #4b5563;
+    padding: 0;
+    direction: rtl;
+    background: linear-gradient(135deg, #fff1f6, #f3f4f6);
+    font-family: 'Vazirmatn', sans-serif;
+    color: #374151;
 }
 
+/* ===== Main Container ===== */
 .container {
-    max-width: 900px;
-    margin: 60px auto;
-    padding: 20px;
+    max-width: 950px;
+    margin: 70px auto;
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(219, 39, 119, 0.08);
+}
+
+/* ===== Headings (Centered & Fancy) ===== */
+h1, h2, h3 {
     text-align: center;
+    font-family: 'Lalezar', cursive;
+    margin-bottom: 25px;
 }
 
 h1 {
     font-size: 48px;
-    margin-bottom: 10px;
-    color: #db2777;
-}
-
-.subtitle {
-    color: #9ca3af;
-    font-size: 18px;
-    margin-bottom: 40px;
-}
-
-.card {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(219, 39, 119, 0.15);
-    border: 1px solid #fbcfe8;
+    background: linear-gradient(to left, #ec4899, #db2777);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
 }
 
 h2 {
-    margin-bottom: 20px;
+    font-size: 28px;
     color: #be185d;
 }
 
+h3 {
+    font-size: 22px;
+    color: #9d174d;
+}
+
+/* ===== Paragraph ===== */
+p {
+    line-height: 2.2;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+/* ===== Lists ===== */
 ul {
-    list-style: none;
-    padding: 0;
+    padding-right: 22px;
 }
 
 li {
-    margin: 15px 0;
+    margin-bottom: 10px;
 }
 
-a {
-    text-decoration: none;
-    color: #ec4899;
-    font-size: 18px;
-    transition: all 0.3s ease;
+/* ===== Fancy Buttons (Centered) ===== */
+.card ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-a:hover {
+.card a {
+    display: inline-block;
+    width: 280px;
+    padding: 15px 20px;
+    margin: 12px 0;
+    background: #f3f4f6;
     color: #be185d;
-    transform: scale(1.05);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 20px rgba(0,0,0,0.08),
+        inset 0 -3px 6px rgba(0,0,0,0.05);
+    transition: all 0.25s ease;
 }
 
+/* Hover Effect */
+.card a:hover {
+    background: linear-gradient(135deg, #f9a8d4, #f472b6);
+    color: #ffffff;
+    transform: translateY(-6px);
+    box-shadow: 
+        0 15px 30px rgba(219,39,119,0.25),
+        0 0 15px rgba(236,72,153,0.4);
+}
+
+/* ===== Fancy Note ===== */
+blockquote {
+    background: #fff0f6;
+    border-right: 6px solid #ec4899;
+    padding: 20px;
+    border-radius: 18px;
+    margin: 30px 0;
+    box-shadow: 0 10px 25px rgba(236,72,153,0.08);
+}
+
+/* ===== Fancy Table ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 35px 0;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+}
+
+th {
+    background: linear-gradient(to left, #db2777, #ec4899);
+    color: white;
+    padding: 14px;
+    font-weight: 700;
+}
+
+td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #fbcfe8;
+}
+
+tr:nth-child(even) {
+    background: #fdf2f8;
+}
+
+/* ===== Divider ===== */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to left, #f472b6, transparent);
+    margin: 45px 0;
+    border-radius: 10px;
+}
+
+/* ===== Footer ===== */
 footer {
-    margin-top: 50px;
+    text-align: center;
+    margin-top: 60px;
     color: #9ca3af;
     font-size: 14px;
 }
