@@ -48,7 +48,7 @@ body {
 h1, h2, h3 {
   font-weight: 800;
   margin-bottom: 20px;
-  background: linear-gradient(90deg, #d6046a, #ffb6d9);
+  background: linear-gradient(90deg, #d6046a, #a50050);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
