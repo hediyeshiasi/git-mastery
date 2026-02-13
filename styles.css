@@ -1,152 +1,150 @@
-/* ===== Google Fonts ===== */
-@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;500;700;900&display=swap');
+/* 🎀 Google Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Pacifico&display=swap');
 
-/* ===== Base ===== */
+:root {
+  --pink-1: #ffd6ec;
+  --pink-2: #ffc2e2;
+  --pink-3: #ff9ed2;
+  --pink-4: #ff7fc7;
+  --lavender: #e6d6ff;
+  --white-glass: rgba(255, 255, 255, 0.6);
+  --shadow-soft: 0 8px 30px rgba(255, 105, 180, 0.15);
+  --shadow-strong: 0 15px 40px rgba(255, 105, 180, 0.25);
+}
+
+/* 🌸 Background */
 body {
-    margin: 0;
-    padding: 0;
-    direction: rtl;
-    background: linear-gradient(135deg, #fff1f6, #f3f4f6);
-    font-family: 'Vazirmatn', sans-serif;
-    color: #374151;
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, var(--pink-1), var(--lavender));
+  background-attachment: fixed;
+  color: #5a3d55;
+  overflow-x: hidden;
 }
 
-/* ===== Main Container ===== */
-.container {
-    max-width: 950px;
-    margin: 70px auto;
-    background: #ffffff;
-    padding: 50px;
-    border-radius: 28px;
-    box-shadow: 0 25px 60px rgba(219, 39, 119, 0.08);
+/* ✨ Floating Glow Animation */
+body::before {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,182,193,0.4), transparent 70%);
+  top: -200px;
+  left: -200px;
+  z-index: -1;
+  animation: floatGlow 10s infinite alternate ease-in-out;
 }
 
-/* ===== Headings (Centered & Fancy) ===== */
+@keyframes floatGlow {
+  from { transform: translateY(0px); }
+  to { transform: translateY(50px); }
+}
+
+/* 🎀 Headings */
 h1, h2, h3 {
-    text-align: center;
-    font-family: 'Lalezar', cursive;
-    margin-bottom: 25px;
+  font-family: 'Pacifico', cursive;
+  color: var(--pink-4);
+  text-shadow: 2px 2px 10px rgba(255, 182, 193, 0.6);
 }
 
 h1 {
-    font-size: 48px;
-    background: linear-gradient(to left, #ec4899, #db2777);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 1px;
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 40px;
 }
 
-h2 {
-    font-size: 28px;
-    color: #be185d;
+/* 💎 Glass Card */
+.card {
+  background: var(--white-glass);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: var(--shadow-soft);
+  margin: 30px auto;
+  max-width: 800px;
+  transition: all 0.4s ease;
 }
 
-h3 {
-    font-size: 22px;
-    color: #9d174d;
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-strong);
 }
 
-/* ===== Paragraph ===== */
-p {
-    line-height: 2.2;
-    margin-bottom: 20px;
-    text-align: right;
+/* 🌷 Buttons */
+.button {
+  background: linear-gradient(135deg, var(--pink-3), var(--pink-4));
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+  transition: all 0.3s ease;
 }
 
-/* ===== Lists ===== */
-ul {
-    padding-right: 22px;
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.5);
 }
 
-li {
-    margin-bottom: 10px;
+/* ✨ Fancy Links */
+a {
+  color: var(--pink-4);
+  text-decoration: none;
+  position: relative;
 }
 
-/* ===== Fancy Buttons (Centered) ===== */
-.card ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--pink-3);
+  left: 0;
+  bottom: -4px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
-.card a {
-    display: inline-block;
-    width: 280px;
-    padding: 15px 20px;
-    margin: 12px 0;
-    background: #f3f4f6;
-    color: #be185d;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 20px;
-    box-shadow: 
-        0 8px 20px rgba(0,0,0,0.08),
-        inset 0 -3px 6px rgba(0,0,0,0.05);
-    transition: all 0.25s ease;
+a:hover::after {
+  transform: scaleX(1);
 }
 
-/* Hover Effect */
-.card a:hover {
-    background: linear-gradient(135deg, #f9a8d4, #f472b6);
-    color: #ffffff;
-    transform: translateY(-6px);
-    box-shadow: 
-        0 15px 30px rgba(219,39,119,0.25),
-        0 0 15px rgba(236,72,153,0.4);
+/* 💗 Cute Input Fields */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  border: 2px solid var(--pink-2);
+  background: rgba(255,255,255,0.8);
+  outline: none;
+  transition: 0.3s;
 }
 
-/* ===== Fancy Note ===== */
-blockquote {
-    background: #fff0f6;
-    border-right: 6px solid #ec4899;
-    padding: 20px;
-    border-radius: 18px;
-    margin: 30px 0;
-    box-shadow: 0 10px 25px rgba(236,72,153,0.08);
+input:focus, textarea:focus {
+  border-color: var(--pink-4);
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
 }
 
-/* ===== Fancy Table ===== */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 35px 0;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+/* 🌸 Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-th {
-    background: linear-gradient(to left, #db2777, #ec4899);
-    color: white;
-    padding: 14px;
-    font-weight: 700;
+::-webkit-scrollbar-track {
+  background: var(--pink-1);
 }
 
-td {
-    padding: 14px;
-    text-align: center;
-    border-bottom: 1px solid #fbcfe8;
+::-webkit-scrollbar-thumb {
+  background: var(--pink-3);
+  border-radius: 10px;
 }
 
-tr:nth-child(even) {
-    background: #fdf2f8;
-}
-
-/* ===== Divider ===== */
-hr {
-    border: none;
-    height: 2px;
-    background: linear-gradient(to left, #f472b6, transparent);
-    margin: 45px 0;
-    border-radius: 10px;
-}
-
-/* ===== Footer ===== */
+/* 🎀 Footer */
 footer {
-    text-align: center;
-    margin-top: 60px;
-    color: #9ca3af;
-    font-size: 14px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+  color: #a14f84;
 }
