@@ -1,104 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Playfair+Display:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
 
 :root {
-  --bg-main: #fff7fb;      /* صورتی خیلی خیلی کم‌رنگ */
-  --bg-soft: #ffeef6;      /* کمی پررنگ‌تر */
-  --accent: #f8c8dc;       /* صورتی پاستلی */
-  --accent-strong: #f3a6c9;
-  --text-main: #5e4b56;
-  --shadow-soft: 0 10px 30px rgba(248, 200, 220, 0.25);
+  --bg-main: #fff7fb;
+  --bg-soft: #ffeef6;
+  --accent: #f8c8dc;
+  --accent-strong: #e6a8c7;
+  --text-main: #444;
+  --shadow-soft: 0 15px 40px rgba(0,0,0,0.05);
 }
 
-/* 🌸 کل سایت */
+/* 🌸 بکگراند کلی خیلی ملایم */
 body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
-  background-color: var(--bg-main);
+  background: linear-gradient(to bottom, #ffffff, var(--bg-main));
   color: var(--text-main);
-  line-height: 1.8;
 }
 
-/* ✨ کانتینر اصلی */
+/* 📄 برگه سفید وسط صفحه */
 .container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
+  max-width: 850px;
+  margin: 60px auto;
+  padding: 60px 50px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.07);
 }
 
-/* 🎀 سرفصل بیضی شکل */
+/* 🎀 سرفصل بیضی */
 .section-title {
-  display: inline-block;
-  padding: 12px 40px;
-  background: var(--bg-soft);
-  border-radius: 100px; /* بیضی */
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-  color: var(--accent-strong);
-  box-shadow: var(--shadow-soft);
-  margin: 40px auto 25px auto;
   display: block;
   width: fit-content;
-  transition: 0.3s ease;
+  margin: 0 auto 40px auto;
+  padding: 10px 40px;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--accent-strong);
+  box-shadow: 0 8px 20px rgba(248,200,220,0.25);
 }
 
-.section-title:hover {
+/* 💎 کارت حذف شد چون الان کل صفحه برگه سفید شده */
+.card {
+  margin-bottom: 30px;
+}
+
+/* 🌷 فصل‌ها به شکل بیضی */
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+li {
+  margin-bottom: 18px;
+}
+
+li a {
+  display: inline-block;
+  padding: 10px 35px;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--accent-strong);
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+li a:hover {
+  background: var(--accent);
   transform: scale(1.05);
 }
 
-/* 💎 کارت‌های محتوا */
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 25px;
-  box-shadow: var(--shadow-soft);
-  margin-bottom: 30px;
-  transition: 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-/* 🌷 لینک‌ها */
-a {
-  color: var(--accent-strong);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-a:hover {
-  opacity: 0.7;
-}
-
-/* 💗 دکمه لطیف */
-.button {
-  background: var(--accent);
-  border: none;
-  padding: 10px 25px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  color: white;
-  transition: 0.3s;
-}
-
-.button:hover {
-  background: var(--accent-strong);
-}
-
-/* 🌸 اینپوت‌ها */
-input, textarea {
+/* 📊 استایل جدول */
+table {
   width: 100%;
-  padding: 12px;
-  border-radius: 20px;
-  border: 1px solid var(--accent);
-  background: #fffafd;
-  margin-top: 8px;
-  outline: none;
+  border-collapse: collapse;
+  margin-top: 25px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-input:focus, textarea:focus {
-  border-color: var(--accent-strong);
-  box-shadow: 0 0 8px rgba(248, 200, 220, 0.4);
+th {
+  background: var(--bg-soft);
+  padding: 14px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+
+td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #f3e4ec;
+}
+
+tr:hover {
+  background: #fff3f8;
+}
+
+/* ✨ فوتر */
+footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #999;
 }
