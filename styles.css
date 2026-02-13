@@ -1,94 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
-
 body {
-  margin: 0;
-  padding: 0;
-  direction: rtl;
-  text-align: right;
-  font-family: 'Vazirmatn', sans-serif;
-  background: linear-gradient(135deg, #fff5f8, #f4f4f4);
-  color: #444;
+    direction: rtl;
+    text-align: right;
+    font-family: "Vazirmatn", Tahoma, sans-serif;
+    background: #fdf6f9;
+    margin: 0;
+    padding: 0;
 }
 
-/* کارت اصلی */
 .container {
-  max-width: 900px;
-  margin: 70px auto;
-  background: #ffffff;
-  padding: 50px;
-  border-radius: 25px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* هدینگ‌ها فقط وسط */
-h1, h2, h3 {
-  text-align: center;
-  color: #c2185b;
-  margin-top: 50px;
-  margin-bottom: 25px;
-}
-
+/* هدینگ‌ها */
 h1 {
-  font-size: 36px;
-  font-weight: 900;
+    color: #d63384;
+    margin-bottom: 20px;
+    font-size: 32px;
 }
 
 h2 {
-  font-size: 26px;
-  font-weight: 700;
+    color: #e754a6;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: 24px;
 }
 
 h3 {
-  font-size: 20px;
+    color: #b03060;
+    margin-top: 25px;
 }
 
-/* متن‌ها راست چین */
+/* پاراگراف */
 p {
-  line-height: 2.2;
-  margin-bottom: 20px;
+    margin: 15px 0;
+    line-height: 2.2;
 }
 
-/* لیست‌ها */
+/* لیست */
 ul {
-  padding-right: 25px;
+    margin: 15px 0;
+    padding-right: 25px;
 }
 
 li {
-  margin-bottom: 12px;
+    margin: 8px 0;
 }
 
-/* جداکننده */
+/* خط جداکننده */
 hr {
-  border: none;
-  height: 2px;
-  background: #f8bbd0;
-  margin: 40px 0;
-  border-radius: 10px;
+    border: none;
+    border-top: 1px solid #f3c1da;
+    margin: 30px 0;
 }
 
-/* ✨ دکمه‌های فانتزی برجسته */
-a {
-  text-decoration: none;
+/* نقل قول */
+blockquote {
+    background: #fff0f6;
+    border-right: 4px solid #e754a6;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 20px 0;
 }
 
-.button,
-ul li a {
-  display: inline-block;
-  padding: 12px 28px;
-  margin: 8px 0;
-  background: #eeeeee;
-  color: #555;
-  border-radius: 15px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+/* جدول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
 }
 
-/* افکت هاور */
-.button:hover,
-ul li a:hover {
-  background: #f8bbd0;
-  color: #880e4f;
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(194,24,91,0.15);
+th, td {
+    border: 1px solid #f8c8dc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #ffe6f0;
 }
