@@ -1,0 +1,93 @@
+<ul>
+    <li><strong>pick</strong> → نگه‌داشتن Commit</li>
+    <li><strong>reword</strong> → تغییر پیام</li>
+    <li><strong>squash</strong> → ادغام با Commit قبلی</li>
+    <li><strong>drop</strong> → حذف Commit</li>
+  </ul>
+
+  <h3>squash چیست؟</h3>
+
+  <pre><code>
+pick a1b2 Commit 1
+squash c3d4 Commit 2
+  </code></pre>
+
+  <p>Commit دوم در اولی ادغام می‌شود و نتیجه یک Commit تمیز است.</p>
+
+  <hr />
+
+  <h2>هشدار مهم درباره rebase</h2>
+
+  <p>Rebase تاریخچه را بازنویسی می‌کند.</p>
+
+  <p>اگر:</p>
+
+  <ul>
+    <li>Commitها Push شده باشند</li>
+    <li>افراد دیگر روی همان Branch کار کنند</li>
+  </ul>
+
+  <p><strong>استفاده از rebase می‌تواند باعث تضاد شود.</strong></p>
+
+  <p><strong>قاعده حرفه‌ای:</strong></p>
+
+  <ul>
+    <li>روی Branchهای شخصی آزادانه rebase کنید.</li>
+    <li>روی Branchهای عمومی با احتیاط.</li>
+  </ul>
+
+  <hr />
+
+  <h2>تفاوت amend و rebase</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ویژگی</th>
+        <th>amend</th>
+        <th>rebase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>تعداد Commitهای تحت تأثیر</td>
+        <td>فقط آخرین Commit</td>
+        <td>چند Commit</td>
+      </tr>
+      <tr>
+        <td>مناسب برای اصلاح سریع</td>
+        <td>بله</td>
+        <td>خیر</td>
+      </tr>
+      <tr>
+        <td>مناسب برای مرتب‌سازی تاریخچه</td>
+        <td>محدود</td>
+        <td>بله</td>
+      </tr>
+      <tr>
+        <td>سطح پیچیدگی</td>
+        <td>پایین</td>
+        <td>متوسط</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>جمع‌بندی</h2>
+
+  <p>در این بخش یاد گرفتیم:</p>
+
+  <ul>
+    <li>چگونه آخرین Commit را اصلاح کنیم</li>
+    <li>چگونه تاریخچه را بازنویسی کنیم</li>
+    <li>تفاوت merge و rebase چیست</li>
+    <li>چگونه تاریخچه حرفه‌ای و تمیز بسازیم</li>
+  </ul>
+
+  <p>
+    درک amend و rebase یعنی ورود به سطح پیشرفته Git.
+  </p>
+
+</body>
+</html>

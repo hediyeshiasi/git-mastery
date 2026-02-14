@@ -1,0 +1,224 @@
+Hediye, [2/15/2026 2:12 AM]
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>06 — Detached HEAD</title>
+  <style>
+    body {
+      direction: rtl;
+      text-align: right;
+      font-family: "Vazirmatn", "IRANSans", "Tahoma";
+      line-height: 2;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #666;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>06 — Detached HEAD</h1>
+
+  <h2>مقدمه</h2>
+  <p>
+    یکی از مفاهیمی که بسیاری از کاربران Git در ابتدای کار با آن سردرگم می‌شوند، وضعیت <strong>Detached HEAD</strong> است.
+  </p>
+
+  <p>در این بخش یاد می‌گیریم:</p>
+  <ul>
+    <li>HEAD دقیقاً چیست</li>
+    <li>Detached HEAD یعنی چه</li>
+    <li>چرا این وضعیت اتفاق می‌افتد</li>
+    <li>آیا خطرناک است؟</li>
+    <li>چگونه از آن خارج شویم</li>
+  </ul>
+
+  <hr />
+
+  <h2>HEAD چیست؟</h2>
+  <p>
+    در Git، <strong>HEAD یک اشاره‌گر (Pointer)</strong> است.
+  </p>
+
+  <p><strong>HEAD → اشاره به آخرین Commit شاخه فعلی</strong></p>
+
+  <p>وقتی روی شاخه main هستید، ساختار به شکل زیر است:</p>
+
+  <pre><code>
+main
+↓
+Commit C (HEAD)
+↓
+Commit B
+↓
+Commit A
+  </code></pre>
+
+  <p>در این حالت، HEAD به شاخه main متصل است.</p>
+
+  <hr />
+
+  <h2>Detached HEAD چگونه ایجاد می‌شود؟</h2>
+
+  <p>اگر به‌جای رفتن روی یک Branch، مستقیماً به یک Commit بروید:</p>
+
+  <pre><code>git checkout a1b2c3d</code></pre>
+
+  <p>
+    در این حالت Git شما را به آن Commit منتقل می‌کند،  
+    اما دیگر روی شاخه main نیستید.
+  </p>
+
+  <p>ساختار اکنون به این شکل است:</p>
+
+  <pre><code>
+main → Commit C
+          ↓
+       Commit B
+          ↓
+       Commit A
+
+HEAD → Commit B
+  </code></pre>
+
+  <p><strong>HEAD مستقیماً به یک Commit اشاره می‌کند، نه به یک Branch.</strong></p>
+
+  <p>به این حالت می‌گویند: <strong>Detached HEAD</strong></p>
+
+  <hr />
+
+  <h2>آیا Detached HEAD خطرناک است؟</h2>
+
+  <p>به‌خودی‌خود خطرناک نیست.</p>
+
+  <p>این وضعیت برای موارد زیر مفید است:</p>
+  <ul>
+    <li>بررسی نسخه‌های قدیمی</li>
+    <li>تست یک Snapshot قبلی</li>
+    <li>مقایسه وضعیت‌ها</li>
+  </ul>
+
+  <p><strong>اما اگر در این حالت Commit جدید بگیرید، ممکن است آن Commit گم شود.</strong></p>
+
+  <hr />
+
+  <h2>اگر در Detached HEAD Commit بگیریم چه می‌شود؟</h2>
+
+  <pre><code>git commit -m "Test change"</code></pre>
+
+  <p>ساختار به این شکل می‌شود:</p>
+
+  <pre><code>
+main → Commit C
+          ↓
+       Commit B
+          ↓
+       Commit A
+
+HEAD → Commit D
+          ↓
+       Commit B
+  </code></pre>
+
+  <p>
+    Commit D به هیچ Branchی متصل نیست.  
+    اگر به main برگردید:
+  </p>
+
+  <pre><code>git checkout main</code></pre>
+
+  <p>
+    Commit D دیگر در مسیر شاخه اصلی نیست و ممکن است بعداً توسط Garbage Collection حذف شود.
+  </p>
+
+  <hr />
+
+  <h2>چگونه از Detached HEAD خارج شویم؟</h2>
+
+  <h3>روش ۱: بازگشت به Branch اصلی</h3>
+
+  <pre><code>git checkout main</code></pre>
+
+  <p>ساده‌ترین روش برای خروج از Detached HEAD.</p>
+
+  <h3>روش ۲: تبدیل Commit فعلی به Branch جدید</h3>
+
+  <pre><code>git checkout -b new-branch-name</code></pre>
+
+  <p>این دستور:</p>
+  <ul>
+    <li>یک Branch جدید می‌سازد</li>
+    <li>آن را به Commit فعلی متصل می‌کند</li>
+    <li>HEAD را دوباره متصل می‌کند</li>
+  </ul>
+
+  <p>اکنون دیگر Detached نیستید.</p>
+
+  <hr />
+
+  <h2>تفاوت حالت عادی و Detached</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>وضعیت</th>
+        <th>HEAD به چه چیزی اشاره می‌کند؟</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>حالت عادی</td>
+        <td>Branch</td>
+      </tr>
+      <tr>
+        <td>Detached HEAD</td>
+        <td>Commit مستقیم</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>چرا Git این رفتار را دارد؟</h2>
+
+  <p>زیرا در Git:</p>
+
+  <ul>
+    <li>Branch فقط یک اشاره‌گر متحرک به Commit است</li>
+    <li>HEAD معمولاً به Branch اشاره می‌کند</li>
+    <li>اما می‌تواند مستقیماً به Commit نیز اشاره کند</li>
+  </ul>
+
+  <p><strong>Detached HEAD یعنی HEAD دیگر به یک Branch متصل نیست.</strong></p>
+
+  <hr />
+
+  <h2>جمع‌بندی مفهومی</h2>
+
+  <p><strong>Detached HEAD یعنی:</strong></p>
+
+  <p>HEAD به‌جای Branch، مستقیماً به یک Commit اشاره می‌کند.</p>
+
+Hediye, [2/15/2026 2:12 AM]
+<p>این وضعیت:</p>
+  <ul>
+    <li>برای بررسی نسخه‌های قدیمی مفید است</li>
+    <li>خطرناک نیست</li>
+    <li>اما اگر Commit بگیرید، بهتر است سریعاً یک Branch جدید بسازید</li>
+  </ul>
+
+  <p>
+    درک Detached HEAD یعنی درک واقعی ساختار داخلی Git.  
+    در بخش بعدی وارد یکی از مهم‌ترین مفاهیم Git می‌شویم: <strong>Branchها</strong>.
+  </p>
+
+</body>
+</html>
