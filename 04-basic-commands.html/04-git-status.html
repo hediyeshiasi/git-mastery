@@ -1,0 +1,269 @@
+Hediye, [2/15/2026 2:08 AM]
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>04 — Git Status Explained</title>
+  <style>
+    body {
+      direction: rtl;
+      text-align: right;
+      font-family: "Vazirmatn", "IRANSans", "Tahoma";
+      line-height: 2;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #666;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>04 — Git Status Explained</h1>
+
+  <h2>مقدمه</h2>
+  <p>
+    دستور <code>git status</code> یکی از پرکاربردترین و مهم‌ترین دستورات در Git است.  
+    تقریباً قبل از هر Commit، توسعه‌دهندگان این دستور را اجرا می‌کنند تا ببینند:
+  </p>
+
+  <ul>
+    <li>چه فایل‌هایی تغییر کرده‌اند</li>
+    <li>کدام فایل‌ها Stage شده‌اند</li>
+    <li>چه فایل‌هایی هنوز توسط Git دنبال نمی‌شوند</li>
+    <li>وضعیت فعلی شاخه (Branch) چیست</li>
+  </ul>
+
+  <p>در واقع، <strong>git status داشبورد لحظه‌ای پروژه شماست.</strong></p>
+
+  <hr />
+
+  <h2>چرا git status مهم است؟</h2>
+  <p>
+    Git به‌صورت خودکار تغییرات را ثبت نمی‌کند.  
+    بنابراین باید همیشه بدانیم پروژه در چه وضعیتی قرار دارد.
+  </p>
+
+  <p>git status به ما کمک می‌کند:</p>
+  <ul>
+    <li>از وضعیت دقیق فایل‌ها آگاه شویم</li>
+    <li>قبل از Commit اشتباه نکنیم</li>
+    <li>تاریخچه تمیز و کنترل‌شده بسازیم</li>
+  </ul>
+
+  <hr />
+
+  <h2>ساختار کلی خروجی git status</h2>
+  <p>خروجی این دستور معمولاً شامل بخش‌های زیر است:</p>
+
+  <ol>
+    <li>وضعیت Branch</li>
+    <li>فایل‌های Stage شده</li>
+    <li>فایل‌های تغییر کرده ولی Stage نشده</li>
+    <li>فایل‌های Untracked</li>
+  </ol>
+
+  <hr />
+
+  <h2>نمونه خروجی ساده</h2>
+
+  <pre><code>git status</code></pre>
+
+  <pre><code>On branch main
+
+Changes to be committed:
+  modified:   app.js
+
+Changes not staged for commit:
+  modified:   style.css
+
+Untracked files:
+  test.txt
+</code></pre>
+
+  <p>بیایید این خروجی را تحلیل کنیم.</p>
+
+  <hr />
+
+  <h2>بخش اول: وضعیت Branch</h2>
+
+  <pre><code>On branch main</code></pre>
+
+  <p>این خط نشان می‌دهد که در حال حاضر روی چه شاخه‌ای کار می‌کنید.  
+  در اغلب پروژه‌های جدید، شاخه پیش‌فرض <code>main</code> است.</p>
+
+  <hr />
+
+  <h2>بخش دوم: Changes to be committed</h2>
+
+  <pre><code>Changes to be committed:
+  modified:   app.js
+</code></pre>
+
+  <p>این فایل‌ها در Staging Area قرار دارند، یعنی:</p>
+  <ul>
+    <li>با <code>git add</code> انتخاب شده‌اند</li>
+    <li>آماده ثبت در Commit هستند</li>
+    <li>در Commit بعدی ذخیره خواهند شد</li>
+  </ul>
+
+  <hr />
+
+  <h2>بخش سوم: Changes not staged for commit</h2>
+
+  <pre><code>Changes not staged for commit:
+  modified:   style.css
+</code></pre>
+
+  <p>این فایل‌ها:</p>
+  <ul>
+    <li>قبلاً توسط Git شناخته شده‌اند</li>
+    <li>تغییر کرده‌اند</li>
+    <li>اما هنوز وارد Staging Area نشده‌اند</li>
+  </ul>
+
+  <p>برای Stage کردن آن‌ها:</p>
+  <pre><code>git add style.css</code></pre>
+
+  <hr />
+
+  <h2>بخش چهارم: Untracked files</h2>
+
+  <pre><code>Untracked files:
+  test.txt
+</code></pre>
+
+  <p>این فایل‌ها:</p>
+  <ul>
+    <li>جدید هستند</li>
+    <li>هنوز توسط Git دنبال نمی‌شوند</li>
+    <li>در هیچ Commitی وجود ندارند</li>
+  </ul>
+
+  <p>برای معرفی آن‌ها به Git:</p>
+  <pre><code>git add test.txt</code></pre>
+
+  <hr />
+
+  <h2>دیاگرام وضعیت فایل‌ها</h2>
+
+  <p>فرآیند حرکت فایل‌ها بین وضعیت‌های مختلف:</p>
+
+  <pre><code>
+Untracked
+   │
+   ▼
+Tracked (بعد از git add)
+   │
+   ▼
+Staged
+   │
+   ▼
+Committed
+  </code></pre>
+
+  <p>اگر فایلی که قبلاً Commit شده تغییر کند:</p>
+
+  <pre><code>
+Committed
+   │
+   ▼
+Modified
+   │
+   ├── git add → Staged
+   └── بدون add → باقی در Modified
+  </code></pre>
+
+  <hr />
+
+  <h2>جدول کامل وضعیت‌ها و نیاز به git add</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>وضعیت</th>
+        <th>توضیح</th>
+        <th>نیاز به git add؟</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Untracked</td>
+        <td>فایل جدید</td>
+
+Hediye, [2/15/2026 2:08 AM]
+<td>بله</td>
+      </tr>
+      <tr>
+        <td>Modified</td>
+        <td>فایل قبلی که تغییر کرده</td>
+        <td>بله</td>
+      </tr>
+      <tr>
+        <td>Staged</td>
+        <td>آماده Commit</td>
+        <td>خیر</td>
+      </tr>
+      <tr>
+        <td>Committed</td>
+        <td>ثبت‌شده در تاریخچه</td>
+        <td>خیر</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>نکات حرفه‌ای</h2>
+
+  <h3>۱) اجرای مداوم git status</h3>
+  <p>بهتر است قبل از هر Commit این دستور را اجرا کنید تا مطمئن شوید:</p>
+  <ul>
+    <li>فقط فایل‌های مورد نظر Stage شده‌اند</li>
+    <li>فایل ناخواسته‌ای وارد Commit نمی‌شود</li>
+  </ul>
+
+  <h3>۲) درک پیام‌های راهنما</h3>
+  <p>
+    Git در خروجی <code>git status</code> معمولاً پیشنهاد می‌دهد:
+  </p>
+
+  <pre><code>(use "git add &lt;file&gt;..." to update what will be committed)</code></pre>
+
+  <p>این پیام‌ها بسیار کاربردی هستند و به شما می‌گویند قدم بعدی چیست.</p>
+
+  <h3>۳) هیچ تغییری بدون گزارش باقی نمی‌ماند</h3>
+  <p>
+    یکی از مزایای مهم Git این است که تا زمانی که Commit نکنید،  
+    همیشه می‌توانید ببینید چه چیزی تغییر کرده است.
+  </p>
+
+  <p><strong>git status ابزار اصلی این شفافیت است.</strong></p>
+
+  <hr />
+
+  <h2>جمع‌بندی</h2>
+  <p>در این بخش یاد گرفتیم:</p>
+
+  <ul>
+    <li>git status چه اطلاعاتی نمایش می‌دهد</li>
+    <li>تفاوت بین Untracked، Modified و Staged چیست</li>
+    <li>چگونه فایل‌ها بین وضعیت‌های مختلف حرکت می‌کنند</li>
+    <li>چرا این دستور پایه کنترل پروژه است</li>
+  </ul>
+
+  <p>
+    اگر Git را یک سیستم نسخه‌بندی قدرتمند بدانیم،  
+    <strong>git status چراغ راهنمای شما در تمام مسیر توسعه خواهد بود.</strong>
+  </p>
+
+  <p>در بخش بعدی به بررسی عمیق‌تر تاریخچه پروژه با <code>git log</code> می‌پردازیم.</p>
+
+</body>
+</html>
