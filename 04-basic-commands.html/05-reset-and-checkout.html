@@ -1,0 +1,329 @@
+Hediye, [2/15/2026 2:09 AM]
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>05 — Reset and Checkout</title>
+  <style>
+    body {
+      direction: rtl;
+      text-align: right;
+      font-family: "Vazirmatn", "IRANSans", "Tahoma";
+      line-height: 2;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #666;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>05 — Reset and Checkout</h1>
+
+  <h2>مقدمه</h2>
+  <p>
+    در این بخش با دو دستور بسیار مهم در Git آشنا می‌شویم:
+  </p>
+
+  <ul>
+    <li>git checkout</li>
+    <li>git reset</li>
+  </ul>
+
+  <p>
+    این دو دستور به ما اجازه می‌دهند:
+  </p>
+
+  <ul>
+    <li>به نسخه‌های قبلی برگردیم</li>
+    <li>تغییرات را لغو کنیم</li>
+    <li>وضعیت فایل‌ها را به حالت قبلی بازگردانیم</li>
+    <li>بین Snapshotهای مختلف جابه‌جا شویم</li>
+  </ul>
+
+  <p><strong>اما باید با دقت استفاده شوند، زیرا ممکن است تغییرات را برای همیشه حذف کنند.</strong></p>
+
+  <hr />
+
+  <h2>درک مفهوم بازگشت در Git</h2>
+  <p>
+    هر Commit یک Snapshot از پروژه است.  
+    بازگشت در Git یعنی:
+  </p>
+
+  <ul>
+    <li>دیدن یک Snapshot قدیمی</li>
+    <li>بازگرداندن فایل‌ها به نسخه قبلی</li>
+    <li>جابه‌جایی اشاره‌گر تاریخچه (HEAD)</li>
+  </ul>
+
+  <p>برای درک بهتر، ابتدا باید مفهوم HEAD را بشناسیم.</p>
+
+  <hr />
+
+  <h2>HEAD چیست؟</h2>
+  <p>
+    HEAD اشاره‌گری است که به آخرین Commit فعلی اشاره می‌کند.
+  </p>
+
+  <p><strong>HEAD → آخرین Commit فعال</strong></p>
+
+  <p>
+    وقتی Commit جدیدی می‌سازیم، HEAD جلو می‌رود.  
+    وقتی Reset می‌کنیم، ممکن است HEAD به عقب برگردد.
+  </p>
+
+  <hr />
+
+  <h1>بخش اول: git checkout</h1>
+
+  <h2>کاربرد اصلی checkout</h2>
+  <p>دستور git checkout می‌تواند:</p>
+
+  <ul>
+    <li>جابه‌جایی بین Branchها</li>
+    <li>بازگرداندن فایل به نسخه قبلی</li>
+    <li>مشاهده یک Commit قدیمی</li>
+  </ul>
+
+  <p>در این بخش روی مشاهده Commit و بازگرداندن فایل تمرکز می‌کنیم.</p>
+
+  <hr />
+
+  <h2>مشاهده یک Commit قدیمی</h2>
+
+  <pre><code>git log --oneline</code></pre>
+
+  <p>فرض کنید شناسه Commit این باشد:</p>
+
+  <pre><code>a1b2c3d</code></pre>
+
+  <p>برای رفتن به آن Commit:</p>
+
+  <pre><code>git checkout a1b2c3d</code></pre>
+
+  <p>
+    اکنون پروژه دقیقاً در همان وضعیت آن Commit قرار می‌گیرد.  
+    در این حالت شما در وضعیت <strong>Detached HEAD</strong> هستید.
+  </p>
+
+  <h3>Detached HEAD چیست؟</h3>
+  <p>
+    وقتی مستقیماً روی یک Commit قدیمی Checkout می‌کنید، دیگر روی Branch اصلی نیستید.
+  </p>
+
+  <p>در این حالت:</p>
+  <ul>
+    <li>می‌توانید کد را بررسی کنید</li>
+    <li>اما Commit جدید خارج از شاخه اصلی خواهد بود</li>
+  </ul>
+
+  <p>برای بازگشت به شاخه اصلی:</p>
+
+  <pre><code>git checkout main</code></pre>
+
+  <hr />
+
+  <h2>بازگرداندن یک فایل به نسخه قبلی</h2>
+
+  <pre><code>git checkout -- file.txt</code></pre>
+
+  <p>این دستور:</p>
+  <ul>
+    <li>تغییرات فعلی فایل را حذف می‌کند</li>
+    <li>فایل را به آخرین نسخه ثبت‌شده بازمی‌گرداند</li>
+  </ul>
+
+  <p><strong>این عمل قابل بازگشت نیست.</strong></p>
+
+  <hr />
+
+  <h1>بخش دوم: git reset</h1>
+
+  <h2>reset چه کاری انجام می‌دهد؟</h2>
+  <p>
+    git reset برای جابه‌جا کردن HEAD و تغییر وضعیت Staging Area و Working Directory استفاده می‌شود.
+  </p>
+
+  <p>این دستور سه حالت اصلی دارد:</p>
+
+  <ul>
+    <li>--soft</li>
+    <li>--mixed (پیش‌فرض)</li>
+    <li>--hard</li>
+  </ul>
+
+  <hr />
+
+  <h2>۱) reset --soft</h2>
+
+  <pre><code>git reset --soft HEAD~1</code></pre>
+
+  <p>نتیجه:</p>
+
+  <ul>
+    <li>HEAD یک Commit عقب می‌رود</li>
+    <li>تغییرات در Staging باقی می‌مانند</li>
+    <li>فایل‌ها حذف نمی‌شوند</li>
+  </ul>
+
+  <p>مناسب برای اصلاح پیام Commit یا ترکیب Commitها.</p>
+
+  <hr />
+
+  <h2>۲) reset --mixed (پیش‌فرض)</h2>
+
+  <pre><code>git reset HEAD~1</code></pre>
+
+  <p>نتیجه:</p>
+
+  <ul>
+    <li>HEAD عقب می‌رود</li>
+    <li>Staging پاک می‌شود</li>
+    <li>فایل‌ها در Working Directory باقی می‌مانند</li>
+  </ul>
+
+  <p>تغییرات حذف نمی‌شوند، فقط از حالت Stage خارج می‌شوند.</p>
+
+  <hr />
+
+  <h2>۳) reset --hard</h2>
+
+  <pre><code>git reset --hard HEAD~1</code></pre>
+
+  <p>نتیجه:</p>
+
+Hediye, [2/15/2026 2:09 AM]
+<ul>
+    <li>HEAD عقب می‌رود</li>
+    <li>Staging پاک می‌شود</li>
+    <li>Working Directory نیز بازگردانده می‌شود</li>
+  </ul>
+
+  <p><strong>تمام تغییرات حذف می‌شوند. این دستور خطرناک است.</strong></p>
+
+  <hr />
+
+  <h2>دیاگرام رفتار reset</h2>
+
+  <pre><code>
+Commit3 (HEAD)
+   |
+Commit2
+   |
+Commit1
+  </code></pre>
+
+  <p>اگر اجرا کنیم:</p>
+
+  <pre><code>git reset --soft HEAD~1</code></pre>
+
+  <p>نتیجه:</p>
+
+  <pre><code>
+Commit2 (HEAD)
+   |
+Commit1
+  </code></pre>
+
+  <p>اما تغییرات Commit3 هنوز در Staging هستند.</p>
+
+  <p>اگر اجرا کنیم:</p>
+
+  <pre><code>git reset --hard HEAD~1</code></pre>
+
+  <p><strong>Commit3 از تاریخچه حذف شده و تغییرات آن نیز پاک می‌شوند.</strong></p>
+
+  <hr />
+
+  <h2>مقایسه checkout و reset</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ویژگی</th>
+        <th>checkout</th>
+        <th>reset</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>جابه‌جایی بین Commitها</td>
+        <td>بله</td>
+        <td>بله</td>
+      </tr>
+      <tr>
+        <td>تغییر HEAD</td>
+        <td>گاهی</td>
+        <td>بله</td>
+      </tr>
+      <tr>
+        <td>حذف تغییرات</td>
+        <td>فقط فایل مشخص</td>
+        <td>در حالت hard</td>
+      </tr>
+      <tr>
+        <td>مناسب برای مشاهده نسخه قدیمی</td>
+        <td>بله</td>
+        <td>خیر</td>
+      </tr>
+      <tr>
+        <td>خطر از دست دادن داده</td>
+        <td>کم</td>
+        <td>زیاد (در hard)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>چه زمانی از کدام استفاده کنیم؟</h2>
+
+  <ul>
+    <li>برای دیدن نسخه قدیمی → <strong>checkout</strong></li>
+    <li>برای لغو Stage → <strong>reset</strong></li>
+    <li>برای حذف کامل تغییرات → <strong>reset --hard</strong> (با احتیاط)</li>
+    <li>برای اصلاح Commit اخیر → <strong>reset --soft</strong></li>
+  </ul>
+
+  <hr />
+
+  <h2>نکته مهم امنیتی</h2>
+  <p>
+    قبل از استفاده از <code>reset --hard</code> مطمئن شوید:
+  </p>
+
+  <ul>
+    <li>تغییرات مهمی در Working Directory ندارید</li>
+    <li>یا نسخه پشتیبان دارید</li>
+  </ul>
+
+  <p><strong>این دستور می‌تواند تغییرات را برای همیشه حذف کند.</strong></p>
+
+  <hr />
+
+  <h2>جمع‌بندی</h2>
+
+  <p>در این بخش یاد گرفتیم:</p>
+
+  <ul>
+    <li>HEAD چیست</li>
+    <li>چگونه با checkout بین نسخه‌ها جابه‌جا شویم</li>
+    <li>چگونه با reset تاریخچه را جابه‌جا کنیم</li>
+    <li>تفاوت بین soft، mixed و hard چیست</li>
+  </ul>
+
+  <p>
+    درک صحیح این دو دستور برای مدیریت حرفه‌ای تاریخچه پروژه ضروری است.  
+    در بخش بعدی به بررسی Branchها و مفهوم شاخه‌بندی در Git می‌پردازیم.
+  </p>
+
+</body>
+</html>

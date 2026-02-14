@@ -1,0 +1,299 @@
+Hediye, [2/15/2026 2:19 AM]
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>08 — Delete Commit and History</title>
+  <style>
+    body {
+      direction: rtl;
+      text-align: right;
+      font-family: "Vazirmatn", "IRANSans", "Tahoma";
+      line-height: 2;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #666;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>08 — Delete Commit and History</h1>
+
+  <h2>مقدمه</h2>
+  <p>
+    گاهی لازم است:
+  </p>
+
+  <ul>
+    <li>یک Commit اشتباه را حذف کنیم</li>
+    <li>تاریخچه را به حالت قبل برگردانیم</li>
+    <li>تغییرات را لغو کنیم</li>
+    <li>یا نسخه‌ای از پروژه را اصلاح کنیم</li>
+  </ul>
+
+  <p>
+    اما در Git حذف Commit به چند روش مختلف انجام می‌شود و هر روش رفتار متفاوتی دارد.
+  </p>
+
+  <p>در این بخش یاد می‌گیریم:</p>
+
+  <ul>
+    <li>تفاوت reset و revert</li>
+    <li>چه زمانی تاریخچه بازنویسی می‌شود</li>
+    <li>چه زمانی امن است و چه زمانی خطرناک</li>
+  </ul>
+
+  <hr />
+
+  <h1>حذف Commit با git reset</h1>
+
+  <h2>بازگشت به Commit قبلی</h2>
+
+  <pre><code>git reset --hard HEAD~1</code></pre>
+
+  <p>نتیجه:</p>
+
+  <ul>
+    <li>HEAD یک Commit عقب می‌رود</li>
+    <li>Staging پاک می‌شود</li>
+    <li>Working Directory بازگردانده می‌شود</li>
+    <li>Commit حذف می‌شود</li>
+  </ul>
+
+  <p><strong>این روش تاریخچه را بازنویسی می‌کند.</strong></p>
+
+  <hr />
+
+  <h2>تفاوت حالت‌های reset</h2>
+
+  <h3>۱) reset --soft</h3>
+
+  <pre><code>git reset --soft HEAD~1</code></pre>
+
+  <ul>
+    <li>Commit حذف می‌شود</li>
+    <li>تغییرات در Staging باقی می‌مانند</li>
+    <li>فایل‌ها حذف نمی‌شوند</li>
+  </ul>
+
+  <h3>۲) reset --mixed (پیش‌فرض)</h3>
+
+  <pre><code>git reset HEAD~1</code></pre>
+
+  <ul>
+    <li>Commit حذف می‌شود</li>
+    <li>Staging پاک می‌شود</li>
+    <li>تغییرات در Working Directory باقی می‌مانند</li>
+  </ul>
+
+  <h3>۳) reset --hard</h3>
+
+  <pre><code>git reset --hard HEAD~1</code></pre>
+
+  <ul>
+    <li>Commit حذف می‌شود</li>
+    <li>Staging پاک می‌شود</li>
+    <li>Working Directory نیز بازگردانده می‌شود</li>
+    <li><strong>تغییرات کاملاً حذف می‌شوند</strong></li>
+  </ul>
+
+  <p><strong>این دستور خطرناک است.</strong></p>
+
+  <hr />
+
+  <h1>حذف Commit بدون بازنویسی تاریخچه (git revert)</h1>
+
+  <p>
+    اگر Commit را قبلاً Push کرده باشید، استفاده از reset می‌تواند مشکل ایجاد کند.
+  </p>
+
+  <p>در این حالت باید از دستور زیر استفاده کنید:</p>
+
+  <pre><code>git revert &lt;commit-hash&gt;</code></pre>
+
+  <p>Revert:</p>
+
+  <ul>
+    <li>Commit قبلی را حذف نمی‌کند</li>
+    <li>یک Commit جدید می‌سازد</li>
+    <li>اثر Commit قبلی را خنثی می‌کند</li>
+    <li>تاریخچه را بازنویسی نمی‌کند</li>
+  </ul>
+
+  <hr />
+
+  <h2>تفاوت reset و revert</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ویژگی</th>
+        <th>reset</th>
+        <th>revert</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>حذف Commit از تاریخچه</td>
+        <td>بله</td>
+        <td>خیر</td>
+      </tr>
+      <tr>
+        <td>ساخت Commit جدید</td>
+        <td>خیر</td>
+        <td>بله</td>
+      </tr>
+      <tr>
+        <td>بازنویسی تاریخچه</td>
+        <td>بله</td>
+        <td>خیر</td>
+      </tr>
+      <tr>
+        <td>مناسب برای پروژه تیمی</td>
+        <td>خیر</td>
+        <td>بله</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>قاعده مهم:</strong> اگر Commit را Push کرده‌اید → از revert استفاده کنید.</p>
+
+  <hr />
+
+  <h2>حذف چند Commit</h2>
+
+  <pre><code>git reset --hard HEAD~3</code></pre>
+
+  <p>سه Commit آخر حذف می‌شوند.</p>
+
+  <p>ساختار قبل:</p>
+
+  <pre><code>A --- B --- C --- D --- E (HEAD)</code></pre>
+
+  <p>بعد از reset:</p>
+
+  <pre><code>A --- B (HEAD)</code></pre>
+
+  <hr />
+
+  <h2>بازگردانی تاریخچه با Rebase</h2>
+
+  <p>اگر بخواهید:</p>
+
+  <ul>
+    <li>چند Commit را حذف کنید</li>
+    <li>پیام آن‌ها را اصلاح کنید</li>
+    <li>ترتیب آن‌ها را تغییر دهید</li>
+  </ul>
+
+  <p>می‌توانید از دستور زیر استفاده کنید:</p>
+
+  <pre><code>git rebase -i HEAD~5</code></pre>
+
+  <p>در حالت interactive می‌توانید:</p>
+
+Hediye, [2/15/2026 2:19 AM]
+<ul>
+    <li>pick → نگه‌داشتن Commit</li>
+    <li>drop → حذف Commit</li>
+    <li>squash → ادغام Commitها</li>
+    <li>reword → تغییر پیام</li>
+  </ul>
+
+  <p><strong>این روش تاریخچه را بازنویسی می‌کند.</strong></p>
+
+  <hr />
+
+  <h2>حذف Commit بعد از Push</h2>
+
+  <p>اگر Commit را Push کرده‌اید و می‌خواهید آن را حذف کنید:</p>
+
+  <pre><code>git push --force</code></pre>
+
+  <p><strong>این کار خطرناک است.</strong></p>
+
+  <p>چرا؟</p>
+
+  <ul>
+    <li>تاریخچه مخزن Remote تغییر می‌کند</li>
+    <li>ممکن است برای همکاران مشکل ایجاد شود</li>
+  </ul>
+
+  <p><strong>قاعده حرفه‌ای:</strong> Force Push فقط روی Branch شخصی.</p>
+
+  <hr />
+
+  <h2>مقایسه روش‌ها</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>سناریو</th>
+        <th>روش پیشنهادی</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>حذف Commit قبل از Push</td>
+        <td>reset</td>
+      </tr>
+      <tr>
+        <td>اصلاح سریع آخرین Commit</td>
+        <td>amend</td>
+      </tr>
+      <tr>
+        <td>حذف Commit بعد از Push</td>
+        <td>revert</td>
+      </tr>
+      <tr>
+        <td>مرتب‌سازی چند Commit</td>
+        <td>rebase -i</td>
+      </tr>
+      <tr>
+        <td>حذف کامل و خطرناک</td>
+        <td>reset --hard</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>نکته مهم درباره ایمنی</h2>
+
+  <p>
+    Git معمولاً Commitها را فوراً نابود نمی‌کند.  
+    تا مدتی می‌توان آن‌ها را از طریق دستور زیر بازیابی کرد:
+  </p>
+
+  <pre><code>git reflog</code></pre>
+
+  <p>اما نباید به این موضوع وابسته بود.</p>
+
+  <hr />
+
+  <h2>جمع‌بندی</h2>
+
+  <p>در این بخش یاد گرفتیم:</p>
+
+  <ul>
+    <li>چگونه Commit حذف کنیم</li>
+    <li>تفاوت reset و revert چیست</li>
+    <li>چه زمانی تاریخچه بازنویسی می‌شود</li>
+    <li>چرا Force Push خطرناک است</li>
+    <li>چگونه حرفه‌ای با تاریخچه کار کنیم</li>
+  </ul>
+
+  <p>
+    مدیریت صحیح تاریخچه یکی از مهارت‌های کلیدی در Git حرفه‌ای است.
+  </p>
+
+</body>
+</html>
