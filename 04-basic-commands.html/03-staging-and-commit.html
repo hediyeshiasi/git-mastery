@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Installing Git</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>03 — Staging and Commit</h1>
+
+  <h2>مقدمه</h2>
+  <p>
+    پس از ایجاد Repository، Git آماده مدیریت نسخه‌ها است.  
+    اما تا زمانی که تغییرات را به‌صورت رسمی ثبت نکنیم، هیچ سابقه‌ای در تاریخچه پروژه ایجاد نمی‌شود.
+  </p>
+  <p>در این بخش با دو مفهوم کلیدی آشنا می‌شویم:</p>
+  <ul>
+    <li>Staging Area</li>
+    <li>Commit (Snapshot)</li>
+  </ul>
+  <p>این دو مفهوم، هسته اصلی سیستم نسخه‌بندی در Git را تشکیل می‌دهند.</p>
+
+  <hr />
+
+  <h2>مدل سه‌مرحله‌ای Git</h2>
+  <p>Git تغییرات را در سه ناحیه جداگانه مدیریت می‌کند:</p>
+
+  <ol>
+    <li>
+      <strong>Working Directory</strong>  
+      محل واقعی فایل‌ها روی سیستم شما؛ جایی که ایجاد و ویرایش انجام می‌شود.
+    </li>
+    <li>
+      <strong>Staging Area (Index)</strong>  
+      ناحیه‌ای واسط برای انتخاب تغییراتی که قرار است ثبت شوند.
+    </li>
+    <li>
+      <strong>Repository</strong>  
+      محل ذخیره دائمی Snapshotها و تاریخچه پروژه.
+    </li>
+  </ol>
+
+  <p><strong>جریان ثبت تغییرات:</strong></p>
+  <p><code>Working Directory → Staging Area → Repository</code></p>
+  <p>هیچ تغییری بدون دستور صریح شما وارد Repository نمی‌شود.</p>
+
+  <hr />
+
+  <h2>بررسی وضعیت پروژه</h2>
+  <p>برای مشاهده وضعیت فایل‌ها از دستور زیر استفاده می‌کنیم:</p>
+
+  <pre><code>git status</code></pre>
+
+  <p>این دستور:</p>
+  <ul>
+    <li>وضعیت فایل‌ها را گزارش می‌دهد</li>
+    <li>نشان می‌دهد چه فایل‌هایی جدید هستند</li>
+    <li>مشخص می‌کند کدام فایل‌ها تغییر کرده‌اند</li>
+    <li>نمایش می‌دهد چه فایل‌هایی آماده Commit هستند</li>
+  </ul>
+
+  <h3>مفهوم Untracked</h3>
+  <p>اگر فایلی ایجاد شود اما هنوز به Git معرفی نشده باشد، در وضعیت <strong>Untracked</strong> قرار دارد.</p>
+
+  <pre><code>Untracked files:
+  note.txt</code></pre>
+
+  <p>یعنی Git فایل را می‌بیند، اما هنوز آن را برای ثبت انتخاب نکرده‌اید.</p>
+
+  <hr />
+
+  <h2>ورود فایل به Staging Area</h2>
+  <p>برای انتخاب یک فایل جهت ثبت:</p>
+
+  <pre><code>git add note.txt</code></pre>
+
+  <p>اکنون فایل وارد Staging Area شده است.</p>
+
+  <p>بررسی مجدد وضعیت:</p>
+  <pre><code>git status</code></pre>
+
+  <pre><code>Changes to be committed:
+  new file: note.txt</code></pre>
+
+  <p>در این مرحله فایل آماده ثبت در تاریخچه است، اما هنوز Commit انجام نشده است.</p>
+
+  <hr />
+
+  <h2>Commit چیست؟</h2>
+  <p>Commit یک Snapshot از وضعیت پروژه در یک لحظه مشخص است.</p>
+
+  <p>هنگامی که Commit انجام می‌شود:</p>
+  <ul>
+    <li>محتوای فایل‌های موجود در Staging Area ذخیره می‌شود</li>
+    <li>یک شناسه یکتا (Hash) تولید می‌شود</li>
+    <li>یک نقطه جدید در تاریخچه پروژه ایجاد می‌شود</li>
+  </ul>
+
+  <p>هر Commit نمایانگر یک نسخه مشخص و قابل بازگشت از پروژه است.</p>
+
+  <hr />
+
+  <h2>ایجاد Commit</h2>
+  <p>برای ثبت تغییرات آماده‌شده:</p>
+
+  <pre><code>git commit -m "Add initial note file"</code></pre>
+
+  <p>پارامتر <code>-m</code> برای تعیین پیام Commit استفاده می‌شود.</p>
+
+  <p>پیام Commit باید:</p>
+  <ul>
+    <li>کوتاه</li>
+    <li>شفاف</li>
+    <li>توصیف‌کننده تغییر انجام‌شده</li>
+  </ul>
+
+  <p>پس از اجرای این دستور، Snapshot ساخته شده و وارد Repository می‌شود.</p>
+
+  <hr />
+
+  <h2>مشاهده تاریخچه Commitها</h2>
+  <p>برای مشاهده تاریخچه:</p>
+
+  <pre><code>git log --oneline</code></pre>
+
+  <pre><code>a1b2c3d Add initial note file</code></pre>
+
+  <p>هر Commit دارای یک شناسه یکتای ۴۰ کاراکتری است؛ نمایش کوتاه آن برای شناسایی کافی است.</p>
+
+  <hr />
+
+  <h2>وضعیت‌های مختلف فایل</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>وضعیت</th>
+        <th>توضیح</th>

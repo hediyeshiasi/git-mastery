@@ -1,3 +1,193 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Installing Git</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+
+
+
+  <h1>07 — Amend and Rebase</h1>
+
+  <h2>مقدمه</h2>
+  <p>
+    در این بخش وارد یکی از حرفه‌ای‌ترین قابلیت‌های Git می‌شویم:
+  </p>
+
+  <ul>
+    <li>اصلاح Commit قبلی با <strong>amend</strong></li>
+    <li>بازنویسی تاریخچه با <strong>rebase</strong></li>
+  </ul>
+
+  <p>
+    این ابزارها به ما کمک می‌کنند:
+  </p>
+
+  <ul>
+    <li>تاریخچه تمیزتر و خواناتر بسازیم</li>
+    <li>اشتباهات کوچک را بدون شلوغ کردن تاریخچه اصلاح کنیم</li>
+    <li>Commitهای پراکنده را مرتب و یکپارچه کنیم</li>
+  </ul>
+
+  <p><strong>اما باید بدانیم که در حال بازنویسی تاریخچه هستیم.</strong></p>
+
+  <hr />
+
+  <h1>بخش اول — git commit --amend</h1>
+
+  <h2>amend چیست؟</h2>
+  <p>
+    دستور <code>--amend</code> به شما اجازه می‌دهد آخرین Commit را ویرایش کنید.  
+    به‌جای ساخت Commit جدید، Commit قبلی بازنویسی می‌شود.
+  </p>
+
+  <p>این یعنی:</p>
+  <ul>
+    <li>پیام Commit قابل تغییر است</li>
+    <li>می‌توان فایل جاافتاده را به آن اضافه کرد</li>
+    <li>Hash Commit تغییر می‌کند</li>
+  </ul>
+
+  <hr />
+
+  <h2>اصلاح پیام Commit</h2>
+
+  <pre><code>git commit --amend</code></pre>
+
+  <p>ویرایشگر باز می‌شود و می‌توانید پیام را اصلاح کنید.</p>
+
+  <p>یا مستقیم:</p>
+
+  <pre><code>git commit --amend -m "Correct commit message"</code></pre>
+
+  <hr />
+
+  <h2>اضافه کردن فایل جاافتاده</h2>
+
+  <pre><code>git add missed-file.txt
+git commit --amend
+</code></pre>
+
+  <p>نتیجه:</p>
+
+  <ul>
+    <li>Commit جدید ساخته نمی‌شود</li>
+    <li>Commit قبلی بازنویسی می‌شود</li>
+    <li>Hash تغییر می‌کند</li>
+  </ul>
+
+  <h3>چرا Hash تغییر می‌کند؟</h3>
+  <p>زیرا هر Commit شامل موارد زیر است:</p>
+
+  <ul>
+    <li>محتوای فایل‌ها</li>
+    <li>پیام Commit</li>
+    <li>زمان ثبت</li>
+    <li>اشاره به Commit قبلی</li>
+  </ul>
+
+  <p>با تغییر هرکدام، Hash جدید تولید می‌شود.</p>
+
+  <hr />
+
+  <h2>چه زمانی از amend استفاده کنیم؟</h2>
+
+  <ul>
+    <li>اصلاح پیام اشتباه</li>
+    <li>اضافه کردن تغییر کوچک</li>
+    <li>تمیز نگه داشتن تاریخچه قبل از Push</li>
+  </ul>
+
+  <p><strong>قاعده مهم:</strong> اگر Commit را قبلاً Push کرده‌اید، استفاده از amend می‌تواند مشکل‌ساز شود.</p>
+
+  <hr />
+
+  <h1>بخش دوم — git rebase</h1>
+
+  <h2>rebase چیست؟</h2>
+  <p>
+    Rebase یعنی بازنویسی و جابه‌جایی Commitها روی پایه جدید.  
+    به زبان ساده: <strong>Rebase تاریخچه را خطی‌تر و مرتب‌تر می‌کند.</strong>
+  </p>
+
+  <hr />
+
+  <h2>مثال مفهومی</h2>
+
+  <pre><code>
+A --- B --- C   (main)
+       \
+        D --- E (feature)
+  </code></pre>
+
+  <p>اگر روی feature اجرا کنیم:</p>
+
+  <pre><code>git rebase main</code></pre>
+
+  <p>نتیجه:</p>
+
+  <pre><code>
+A --- B --- C --- D' --- E'
+  </code></pre>
+
+  <p>Commitهای D و E دوباره ساخته می‌شوند (با Hash جدید).</p>
+
+  <hr />
+
+  <h2>مقایسه merge و rebase</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ویژگی</th>
+        <th>merge</th>
+        <th>rebase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>حفظ شاخه‌ها</td>
+        <td>بله</td>
+        <td>خیر</td>
+      </tr>
+      <tr>
+        <td>ساخت Merge Commit</td>
+        <td>بله</td>
+        <td>خیر</td>
+      </tr>
+      <tr>
+        <td>تاریخچه خطی</td>
+        <td>خیر</td>
+        <td>بله</td>
+      </tr>
+      <tr>
+        <td>بازنویسی تاریخچه</td>
+        <td>خیر</td>
+        <td>بله</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>Interactive Rebase</h2>
+
+  <pre><code>git rebase -i HEAD~3</code></pre>
+
+  <p>این دستور سه Commit آخر را برای ویرایش باز می‌کند.</p>
+
+  <pre><code>
+pick a1b2 Commit 1
+pick c3d4 Commit 2
+pick e5f6 Commit 3
+  </code></pre>
+
+  <p>می‌توانید:</p>
+
+Hediye, [2/15/2026 2:13 AM]
 <ul>
     <li><strong>pick</strong> → نگه‌داشتن Commit</li>
     <li><strong>reword</strong> → تغییر پیام</li>

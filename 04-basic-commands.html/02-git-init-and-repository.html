@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Installing Git</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>02 — Repository and git init</h1>
+
+  <h2>هدف این بخش</h2>
+  <p>
+    در بخش قبل با Working Directory آشنا شدیم و دیدیم که قبل از Git فقط با فایل‌ها و پوشه‌ها کار می‌کنیم و هیچ تاریخچه‌ای وجود ندارد.
+  </p>
+  <p>در این بخش یاد می‌گیریم:</p>
+  <ul>
+    <li>Repository چیست</li>
+    <li>دستور <code>git init</code> دقیقاً چه کاری انجام می‌دهد</li>
+    <li>پوشه مخفی <code>.git</code> چیست</li>
+    <li>چه زمانی یک پوشه به Repository تبدیل می‌شود</li>
+  </ul>
+
+  <hr />
+
+  <h2>Repository چیست؟</h2>
+  <p>
+    Repository در ساده‌ترین تعریف یعنی:
+    <strong>یک پوشه معمولی + ساختار داخلی Git برای نگهداری تاریخچه</strong>.
+  </p>
+  <p>
+    از دید سیستم‌عامل، هیچ تفاوتی بین یک پوش وجود ندارد؛  
+    اما از دید Git، تفاوت بسیار مهمی ایجاد می‌شود.
+  </p>
+  <p>
+    هر پوشه‌ای که داخل آن پوشه‌ای به نام <code>.git</code> وجود داشته باشد، از نظر Git یک Repository محسوب می‌شود.
+  </p>
+
+  <hr />
+
+  <h2>تبدیل یک پوشه به Repository</h2>
+  <p>فرض کنید داخل پوشه <code>git-practice</code> هستید. این پوشه فعلاً فقط یک Working Directory ساده است.</p>
+
+  <h3>اجرای دستور</h3>
+  <pre><code>git init</code></pre>
+
+  <hr />
+
+  <h2>دستور git init چه می‌کند؟</h2>
+  <p>وقتی دستور <code>git init</code> اجرا می‌شود:</p>
+  <ul>
+    <li>یک پوشه مخفی به نام <code>.git</code> ساخته می‌شود.</li>
+    <li>ساختار داخلی لازم برای ذخیره تاریخچه ایجاد می‌شود.</li>
+    <li>Git از این لحظه شروع به مدیریت تغییرات این پوشه می‌کند.</li>
+  </ul>
+
+  <p>اما نکته مهم:</p>
+  <ul>
+    <li>هنوز هیچ فایلی ثبت نشده است.</li>
+    <li>هنوز هیچ Commit وجود ندارد.</li>
+    <li>هنوز هیچ Snapshot ساخته نشده است.</li>
+  </ul>
+
+  <hr />
+
+  <h2>پوشه مخفی .git چیست؟</h2>
+  <p><code>.git</code> قلب Repository است و شامل موارد زیر می‌شود:</p>
+  <ul>
+    <li>تاریخچه Commitها</li>
+    <li>Snapshotها</li>
+    <li>اشاره‌گرها (مثل HEAD)</li>
+    <li>تنظیمات داخلی Repository</li>
+  </ul>
+  <p>
+    اگر این پوشه حذف شود، کل تاریخچه پروژه از بین می‌رود.  
+    بنابراین هرگز نباید آن را به‌صورت دستی حذف یا ویرایش کرد (مگر اینکه دقیقاً بدانید چه می‌کنید).
+  </p>
+
+  <hr />
+
+  <h2>تفاوت Working Directory و Repository</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>مفهوم</th>
+        <th>توضیح</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Working Directory</td>
+        <td>پوشه‌ای که روی فایل‌های آن کار می‌کنیم</td>
+      </tr>
+      <tr>
+        <td>Repository</td>
+        <td>همان پوشه + پوشه مخفی <code>.git</code></td>
+      </tr>
+      <tr>
+        <td>git init</td>
+        <td>تبدیل یک پوشه معمولی به Repository</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h2>یک تصویر ذهنی ساده</h2>
+  <p>
+    یک پوشه معمولی را در نظر بگیرید.  
+    قبل از اجرای <code>git init</code>، این پوشه فقط یک محیط کاری ساده است.
+  </p>
+  <p>
+    بعد از اجرای <code>git init</code>:
+  </p>
+  <ul>
+    <li>پوشه همچنان همان پوشه است</li>
+    <li>اما اکنون یک سیستم ثبت تاریخچه درون آن فعال شده است</li>
+  </ul>
+
+  <p><strong>پوشه + .git = Repository</strong></p>
+
+  <hr />
+
+  <h2>بررسی وضعیت Repository</h2>
+  <p>پس از اجرای <code>git init</code> می‌توانید دستور زیر را اجرا کنید:</p>
+
+  <pre><code>git status</code></pre>
+
+  <p>
+    این دستور هیچ تغییری ایجاد نمی‌کند؛ فقط وضعیت فعلی پروژه را گزارش می‌دهد.  
+    معمولاً در این مرحله پیامی دریافت می‌کنید که نشان می‌دهد هنوز هیچ Commitی وجود ندارد.
+  </p>
+
+  <hr />
+
+  <h2>نتیجه</h2>
+  <p>با اجرای <code>git init</code>:</p>
+  <ul>
+    <li>پوشه شما به Repository تبدیل می‌شود</li>
+    <li>ساختار داخلی Git ایجاد می‌شود</li>
+    <li>امکان ثبت تاریخچه فراهم می‌شود</li>
+  </ul>
+  <p>اما هنوز هیچ فایلی در تاریخچه ثبت نشده است.</p>
