@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Installing Git</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+<div dir="rtl">
+# 01 — Working Directory
+ <h1>01 — Working Directory</h1>
+
+  <h2>تعریف</h2>
+  <p>
+    <strong>Working Directory</strong> دایرکتوری‌ای در فایل‌سیستم است که فایل‌های پروژه در آن قرار دارند
+    و شما مستقیماً آن‌ها را ویرایش می‌کنید.
+  </p>
+  <p>تا پیش از ایجاد Repository، این پوشه:</p>
+  <ul>
+    <li>تحت کنترل Git نیست</li>
+    <li>هیچ تاریخچه‌ای ندارد</li>
+    <li>هیچ نسخه‌ای ذخیره نمی‌کند</li>
+    <li>هیچ فایلی را رهگیری نمی‌کند</li>
+  </ul>
+  <p>در این مرحله ما صرفاً با فایل‌سیستم کار می‌کنیم.</p>
+
+  <hr />
+
+  <h2>موقعیت در معماری Git</h2>
+  <p>Git بر کل سیستم شما نظارت ندارد.</p>
+  <p>مدل ذهنی Git شامل سه ناحیه است:</p>
+  <ol>
+    <li>Working Directory</li>
+    <li>Staging Area</li>
+    <li>Repository</li>
+  </ol>
+  <p>
+    Working Directory نقطه‌ی آغاز چرخه‌ی تغییرات است.
+    هر تغییری ابتدا در این ناحیه اتفاق می‌افتد.
+  </p>
+  <p>تا زمانی که Repository ایجاد نشود، این پوشه هیچ تفاوتی با سایر پوشه‌های سیستم ندارد.</p>
+
+  <hr />
+
+  <h2>دستورات پایه در Working Directory</h2>
+
+  <h3>مشاهده مسیر فعلی</h3>
+  <pre><code>pwd</code></pre>
+  <p>نمایش مسیر دایرکتوری فعلی.</p>
+
+  <h3>ایجاد Working Directory جدید</h3>
+  <pre><code>mkdir git-practice
+cd git-practice
+pwd</code></pre>
+  <p>اکنون داخل Working Directory پروژه قرار دارید، اما هنوز Git فعال نشده است.</p>
+
+  <h3>کار با فایل‌ها</h3>
+  <pre><code>echo "hello" &gt; note.txt
+echo "world" &gt;&gt; note.txt
+ls</code></pre>
+  <p>فایل تغییر می‌کند، اما:</p>
+  <ul>
+    <li>ثبت نمی‌شود</li>
+    <li>نسخه‌سازی نمی‌شود</li>
+    <li>تاریخچه ایجاد نمی‌شود</li>
+  </ul>
+  <p>چرا؟ چون هنوز Repository وجود ندارد.</p>
+
+  <hr />
+
+  <h2>وضعیت در این مرحله</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>مؤلفه</th>
+        <th>وضعیت</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>فایل‌ها</td>
+        <td>وجود دارند</td>
+      </tr>
+      <tr>
+        <td>ساختار پروژه</td>
+        <td>وجود دارد</td>
+      </tr>
+      <tr>
+        <td>رهگیری تغییرات</td>
+        <td>فعال نیست</td>
+      </tr>
+      <tr>
+        <td>نسخه‌بندی</td>
+        <td>فعال نیست</td>
+      </tr>
+      <tr>
+        <td>Repository</td>
+        <td>ایجاد نشده</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
