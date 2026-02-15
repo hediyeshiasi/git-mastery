@@ -315,6 +315,10 @@ footer {
   }
 
 }
+body {
+    direction: rtl;
+    text-align: right;
+}
 
 ul li {
     margin: 15px 0;
