@@ -315,11 +315,7 @@ footer {
   }
 
 }
-ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
+
 ul li {
     margin: 15px 0;
 }
@@ -339,6 +335,7 @@ ul li a:hover {
     background-color: hsl(317, 93%, 40%);
     transform: scale(1.05);
 }
-.container {
+pre code {
+    display: block;
     text-align: center;
 }
