@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>05 — First Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>05 — First Project</h1>
+
+<h2>هدف این فصل</h2>
+
+<p>
+در این فصل یک پروژه واقعی را از صفر ایجاد می‌کنیم و چرخه‌ی کامل کار با Git را در عمل اجرا می‌کنیم.
+</p>
+
+<p>هدف این بخش، اجرای عملی مفاهیم زیر است:</p>
+
+<ul>
+<li>Working Directory</li>
+<li>Repository</li>
+<li>Staging Area</li>
+<li>Commit</li>
+</ul>
+
+<div class="note-box">
+اینجا تمرکز بر «کار کردن» است، نه صرفاً اجرای دستورات.
+</div>
+
+<hr>
+
+<h2>سناریو</h2>
+
+<p>یک پروژه ساده با ساختار زیر ایجاد می‌کنیم:</p>
+
+<pre><code>my-project/
+├── index.html
+├── styles.css
+└── README.md</code></pre>
+
+<p>
+این پروژه عمداً ساده است تا تمرکز فقط روی رفتار Git باشد.
+</p>
+
+<hr>
+
+<h2>مرحله 1 — ایجاد پروژه</h2>
+
+<pre><code>mkdir my-project
+cd my-project</code></pre>
+
+<p>
+در این لحظه فقط یک Working Directory داریم.  
+هنوز هیچ Repositoryای وجود ندارد.
+</p>
+
+<hr>
+
+<h2>مرحله 2 — تبدیل به Repository</h2>
+
+<pre><code>git init</code></pre>
+
+<p>
+اکنون Git این پوشه را به یک Repository محلی تبدیل کرده است.
+</p>
+
+<p>
+ساختار <code>.git</code> ایجاد شده و Git آماده‌ی رهگیری تغییرات است.
+</p>
+
+<hr>
+
+<h2>مرحله 3 — ایجاد فایل‌ها</h2>
+
+<pre><code>touch index.html styles.css README.md</code></pre>
+
+<p>بررسی وضعیت:</p>
+
+<pre><code>git status</code></pre>
+
+<p>
+فایل‌ها در وضعیت <strong>Untracked</strong> قرار دارند.
+</p>
+
+<hr>
+
+<h2>مرحله 4 — افزودن به Staging Area</h2>
+
+<pre><code>git add .</code></pre>
+
+<p>بررسی مجدد:</p>
+
+<pre><code>git status</code></pre>
+
+<p>
+اکنون فایل‌ها در وضعیت <strong>Staged</strong> هستند.
+</p>
+
+<hr>
+
+<h2>مرحله 5 — ایجاد اولین Commit</h2>
+
+<pre><code>git commit -m "Initial project structure"</code></pre>
+
+<ul>
+<li>یک Snapshot ثبت شده</li>
+<li>تاریخچه آغاز شده</li>
+<li>پروژه دارای نسخه است</li>
+</ul>
+
+<p>بررسی تاریخچه:</p>
+
+<pre><code>git log</code></pre>
+
+<p>
+اولین Commit پروژه ثبت شده است.
+</p>
+
+<hr>
+
+<h2>چرخه کامل اجرا شد</h2>
+
+<p>در این فصل شما یک چرخه کامل را اجرا کردید:</p>
+
+<pre><code>Working Directory
+→ Staging Area
+→ Commit
+→ History</code></pre>
+
+<p>
+این همان مدل عملیاتی Git است.
+</p>
+
+<hr>
+
+<h2>نتیجه</h2>
+
+<p>از این لحظه پروژه شما:</p>
+
+<ul>
+<li>نسخه‌بندی می‌شود</li>
+<li>قابل بازگشت است</li>
+<li>دارای تاریخچه است</li>
+<li>قابل توسعه ساخت‌یافته است</li>
+</ul>
+
+<div class="note-box">
+در فصل بعد وارد یکی از مهم‌ترین قابلیت‌های Git می‌شویم:
+<br><br>
+<strong>Branching</strong>
+</div>
+
+</div>
+
+</body>
+</html>

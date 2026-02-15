@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>06 — Branching</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>06 — Branching</h1>
+
+<p>
+Branch ستون اصلی توسعه حرفه‌ای در Git است.
+</p>
+
+<hr>
+
+<h2>Branch دقیقاً چیست؟</h2>
+
+<p>
+Branch یک اشاره‌گر (Pointer) متحرک به یک Commit است.
+</p>
+
+<p>
+در Git، Branch کپی پروژه نیست.  
+Branch فقط نامی است که به آخرین Commit یک خط توسعه اشاره می‌کند.
+</p>
+
+<p>
+وقتی Commit جدیدی ثبت می‌شود، Branch جلو می‌رود و به Commit جدید اشاره می‌کند.
+</p>
+
+<p>
+Git ساختاری گرافی از Commitها دارد.  
+Branch فقط یک مرجع داخل این گراف است.
+</p>
+
+<hr>
+
+<h2>HEAD کجاست؟</h2>
+
+<p>HEAD یک اشاره‌گر ویژه است.</p>
+
+<div class="note-box">
+HEAD مشخص می‌کند در حال حاضر روی کدام Branch (یا Commit) قرار داریم.
+</div>
+
+<p>در حالت عادی:</p>
+
+<pre><code>HEAD → Branch → Commit</code></pre>
+
+<p>
+یعنی HEAD به یک Branch اشاره می‌کند، و آن Branch به یک Commit.
+</p>
+
+<p>
+هر Commit جدید از طریق HEAD ثبت می‌شود.
+</p>
+
+<hr>
+
+<h2>وقتی Branch عوض می‌کنیم چه اتفاقی می‌افتد؟</h2>
+
+<p>وقتی دستور زیر را اجرا می‌کنیم:</p>
+
+<pre><code>git switch feature-login</code></pre>
+
+<p>سه اتفاق می‌افتد:</p>
+
+<ul>
+<li>HEAD به Branch جدید اشاره می‌کند</li>
+<li>فایل‌های Working Directory به وضعیت آخرین Commit آن Branch تغییر می‌کنند</li>
+<li>مسیر توسعه فعال عوض می‌شود</li>
+</ul>
+
+<p>
+هیچ فایلی کپی نمی‌شود.  
+فقط مرجع تغییر می‌کند و Git فایل‌ها را با Snapshot مقصد هماهنگ می‌کند.
+</p>
+
+<hr>
+
+<h2>چرا گاهی Git اجازه تغییر Branch نمی‌دهد؟</h2>
+
+<p>
+اگر در Working Directory تغییرات ثبت‌نشده (Uncommitted Changes) وجود داشته باشد که با Branch مقصد تداخل داشته باشد، Git از تغییر Branch جلوگیری می‌کند.
+</p>
+
+<p>چرا؟</p>
+
+<ul>
+<li>ممکن است داده از بین برود</li>
+<li>یا وضعیت پروژه ناسازگار شود</li>
+</ul>
+
+<p>راه‌حل:</p>
+
+<ul>
+<li>Commit کنید</li>
+<li>یا Stash کنید</li>
+<li>یا تغییرات را حذف کنید</li>
+</ul>
+
+<div class="note-box">
+Git همیشه از تاریخچه محافظت می‌کند.
+</div>
+
+<hr>
+
+<h2>ساخت Branch</h2>
+
+<pre><code>git branch feature-auth</code></pre>
+
+<p>
+Branch ساخته می‌شود اما فعال نمی‌شود.
+</p>
+
+<p>ساخت و جابجایی همزمان:</p>
+
+<pre><code>git switch -c feature-auth</code></pre>
+
+<hr>
+
+<h2>جابجایی بین Branchها</h2>
+
+<pre><code>git switch main</code></pre>
+
+<p>یا:</p>
+
+<pre><code>git checkout main</code></pre>
+
+<p>
+ستاره در خروجی <code>git branch</code> نشان‌دهنده Branch فعال است.
+</p>
+
+<hr>
+
+<h2>حذف Branch</h2>
+
+<p>حذف Branch محلی:</p>
+
+<pre><code>git branch -d feature-auth</code></pre>
+
+<p>حذف اجباری:</p>
+
+<pre><code>git branch -D feature-auth</code></pre>
+
+<p>
+Branch حذف می‌شود، اما Commitها اگر Merge شده باشند باقی می‌مانند.
+</p>
+
+<hr>
+
+<h2>آیا برای هر تغییر باید Branch بسازیم؟</h2>
+
+<p>از نظر فنی: بله می‌توانیم.</p>
+<p>از نظر حرفه‌ای: بستگی دارد.</p>
+
+<p>قاعده رایج در تیم‌ها:</p>
+
+<ul>
+<li>هر Feature → یک Branch</li>
+<li>هر Bug Fix → یک Branch</li>
+<li>هر Refactor مهم → یک Branch</li>
+</ul>
+
+<p>
+اما برای تغییرات بسیار کوچک، ساخت Branch جداگانه الزامی نیست.
+</p>
+
+<p>
+هدف Branch: ایزوله‌سازی تغییرات است.
+</p>
+
+<hr>
+
+<h2>آیا می‌شود از یک Branch برای چند کار استفاده کرد؟</h2>
+
+<p>از نظر فنی بله.</p>
+<p>اما از نظر حرفه‌ای توصیه نمی‌شود.</p>
+
+<p>چرا؟</p>
+
+<ul>
+<li>بررسی کد سخت می‌شود</li>
+<li>Merge پیچیده می‌شود</li>
+<li>بازگشت تغییرات دشوار می‌شود</li>
+</ul>
+
+<div class="note-box">
+یک Branch = یک هدف مشخص
+</div>
+
+<hr>
+
+<h2>اصول نام‌گذاری Branch (Convention)</h2>
+
+<p>نام Branch باید:</p>
+
+<ul>
+<li>کوتاه</li>
+<li>خوانا</li>
+<li>قابل درک</li>
+<li>مبتنی بر هدف</li>
+</ul>
+
+<p>نمونه‌های رایج:</p>
+
+<pre><code>feature/login-system
+feature/payment-gateway
+bugfix/header-alignment
+hotfix/security-patch
+refactor/auth-module</code></pre>
+
+<p>در تیم‌های حرفه‌ای معمولاً از پیشوند استفاده می‌شود:</p>
+
+<ul>
+<li>feature/</li>
+<li>bugfix/</li>
+<li>hotfix/</li>
+<li>refactor/</li>
+<li>chore/</li>
+</ul>
+
+<div class="note-box">
+Consistency مهم‌تر از نوع نام است.
+</div>
+
+<hr>
+
+<h2>مدل ذهنی نهایی</h2>
+
+<p>
+Git یک گراف از Commitهاست.  
+Branch فقط یک برچسب متحرک در این گراف است.  
+HEAD مشخص می‌کند کدام برچسب فعال است.
+</p>
+
+<p>
+Branch توسعه موازی را ممکن می‌کند.  
+بدون Branch، Git فقط یک خط تاریخچه ساده بود.
+</p>
+
+<hr>
+
+<h2>نتیجه</h2>
+
+<p>اکنون می‌دانید:</p>
+
+<ul>
+<li>Branch چیست</li>
+<li>HEAD چه نقشی دارد</li>
+<li>هنگام تغییر Branch چه اتفاقی می‌افتد</li>
+<li>چرا Git گاهی اجازه جابجایی نمی‌دهد</li>
+<li>چگونه Branch بسازیم و حذف کنیم</li>
+<li>اصول حرفه‌ای استفاده از Branch چیست</li>
+</ul>
+
+<div class="note-box">
+در فصل بعد وارد مرحله حیاتی بعدی می‌شویم:
+<br><br>
+<strong>ادغام Branchها (Merge)</strong>
+</div>
+
+</div>
+
+</body>
+</html>

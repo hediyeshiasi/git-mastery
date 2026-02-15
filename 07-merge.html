@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>07 — Merge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>07 — Merge</h1>
+
+<p>
+پس از ایجاد Branchهای جداگانه، در نهایت باید تغییرات آن‌ها را ترکیب کنیم.
+این فرآیند <strong>Merge</strong> نام دارد.
+</p>
+
+<hr>
+
+<h2>Merge چیست؟</h2>
+
+<p>
+Merge فرآیند ادغام تاریخچه‌ی دو Branch است.
+</p>
+
+<p>
+Git با استفاده از ساختار گراف Commitها، تغییرات را ترکیب می‌کند و یک Commit جدید می‌سازد که دو والد (Parent) دارد.
+</p>
+
+<p>
+این Commit را <strong>Merge Commit</strong> می‌نامند.
+</p>
+
+<hr>
+
+<h2>سناریو</h2>
+
+<p>فرض کنید:</p>
+
+<ul>
+<li>روی Branch <code>main</code> هستیم</li>
+<li>یک Branch به نام <code>feature-login</code> ساخته‌ایم</li>
+<li>توسعه در آن انجام شده و Commit گرفته‌ایم</li>
+</ul>
+
+<p>
+اکنون می‌خواهیم تغییرات آن را وارد <code>main</code> کنیم.
+</p>
+
+<hr>
+
+<h2>مراحل Merge</h2>
+
+<p>ابتدا به Branch مقصد بروید:</p>
+
+<pre><code>git switch main</code></pre>
+
+<p>سپس:</p>
+
+<pre><code>git merge feature-login</code></pre>
+
+<p>
+Git تلاش می‌کند تغییرات را ترکیب کند.
+</p>
+
+<hr>
+
+<h2>حالت‌های Merge</h2>
+
+<h3>1️⃣ Fast-forward</h3>
+
+<p>
+اگر Branch مقصد بعد از انشعاب تغییر نکرده باشد:
+</p>
+
+<ul>
+<li>Git فقط اشاره‌گر را جلو می‌برد</li>
+<li>Commit جدید ساخته نمی‌شود</li>
+</ul>
+
+<p>
+تاریخچه خطی باقی می‌ماند.
+</p>
+
+<hr>
+
+<h3>2️⃣ Three-way Merge</h3>
+
+<p>
+اگر هر دو Branch تغییر کرده باشند:
+</p>
+
+<ul>
+<li>Git یک Merge Commit می‌سازد</li>
+<li>این Commit دو Parent دارد</li>
+<li>تاریخچه حالت گرافی پیدا می‌کند</li>
+</ul>
+
+<hr>
+
+<h2>Merge Conflict چیست؟</h2>
+
+<p>
+اگر یک فایل در دو Branch به‌صورت ناسازگار تغییر کرده باشد، Git قادر به تصمیم‌گیری خودکار نیست.
+</p>
+
+<p>در این حالت:</p>
+
+<ul>
+<li>فرآیند Merge متوقف می‌شود</li>
+<li>فایل‌ها در وضعیت Conflict قرار می‌گیرند</li>
+<li>باید به‌صورت دستی اصلاح شوند</li>
+</ul>
+
+<p>ساختار Conflict داخل فایل:</p>
+
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+کد Branch فعلی
+=======
+کد Branch مقصد
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-login</code></pre>
+
+<p>پس از اصلاح:</p>
+
+<pre><code>git add .
+git commit</code></pre>
+
+<hr>
+
+<h2>حذف Branch پس از Merge</h2>
+
+<p>پس از اتمام Merge:</p>
+
+<pre><code>git branch -d feature-login</code></pre>
+
+<p>
+Branch حذف می‌شود اما تاریخچه باقی می‌ماند.
+</p>
+
+<hr>
+
+<h2>مدل ذهنی Merge</h2>
+
+<div class="note-box">
+Git فایل‌ها را ترکیب نمی‌کند.  
+Git Snapshotها را ترکیب می‌کند.
+</div>
+
+<p>
+Merge یعنی اتصال دو مسیر در گراف Commitها.
+</p>
+
+<hr>
+
+<h2>بهترین رویکرد حرفه‌ای</h2>
+
+<ul>
+<li>هر Feature در Branch جدا توسعه داده شود</li>
+<li>پس از تکمیل، Merge به <code>main</code></li>
+<li>سپس حذف Branch</li>
+</ul>
+
+<p>
+این الگو پایه‌ی اکثر Workflowهای حرفه‌ای است.
+</p>
+
+<hr>
+
+<h2>نتیجه</h2>
+
+<p>اکنون می‌توانید:</p>
+
+<ul>
+<li>Branch ایجاد کنید</li>
+<li>مسیر توسعه جدا داشته باشید</li>
+<li>آن‌ها را ادغام کنید</li>
+<li>Conflict را مدیریت کنید</li>
+</ul>
+
+<div class="note-box">
+در فصل بعد وارد موضوع مهم بعدی می‌شویم:
+<br><br>
+<strong>Remote Repositories</strong>
+</div>
+
+</div>
+
+</body>
+</html>
