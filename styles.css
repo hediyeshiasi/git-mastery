@@ -327,7 +327,7 @@ ul li {
 ul li a {
     display: inline-block;
     padding: 10px 25px;
-    background-color: #4CAF50;   /* رنگ بیضی */
+    background-color: #d400b1;   /* رنگ بیضی */
     color: white;
     text-decoration: none;
     border-radius: 50px;         /* بیضی شدن */
@@ -336,7 +336,7 @@ ul li a {
 }
 
 ul li a:hover {
-    background-color: #388E3C;
+    background-color: hsl(317, 93%, 40%);
     transform: scale(1.05);
 }
 .container {
