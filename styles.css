@@ -335,3 +335,7 @@ ul li a:hover {
     background-color: hsl(317, 93%, 40%);
     transform: scale(1.05);
 }
+pre code {
+    display: block;
+    text-align: center;
+}
