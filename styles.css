@@ -316,6 +316,9 @@ footer {
 
 }
 
+ul li {
+    margin: 15px 0;
+}
 
 ul li a {
     display: inline-block;
