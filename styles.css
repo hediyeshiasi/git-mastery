@@ -315,11 +315,7 @@ footer {
   }
 
 }
-ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
+
 ul li {
     margin: 15px 0;
 }
