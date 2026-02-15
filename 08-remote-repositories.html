@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Installing Git</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>08 — Remote Repositories</h1>
+
+<p>تا اینجا تمام کار ما محلی (Local) بود.</p>
+<p>اما Git برای همکاری ساخته شده است.</p>
+<p><strong>Remote Repository</strong> نسخه‌ای از مخزن شماست که روی یک سرور قرار دارد و سایر افراد می‌توانند به آن دسترسی داشته باشند.</p>
+
+<hr>
+
+<h2>Remote چیست؟</h2>
+
+<p>Remote یک اشاره‌گر به یک Repository خارجی است.</p>
+
+<p>این Repository می‌تواند روی:</p>
+
+<ul>
+    <li>GitHub</li>
+    <li>GitLab</li>
+    <li>Bitbucket</li>
+    <li>یا یک سرور خصوصی</li>
+</ul>
+
+<p>قرار داشته باشد.</p>
+
+<p>Remote فقط یک نام مستعار برای یک آدرس URL است.</p>
+
+<hr>
+
+<h2>origin دقیقاً چیست؟</h2>
+
+<p>وقتی یک پروژه را Clone می‌کنیم، Git به‌صورت پیش‌فرض Remoteای به نام <code>origin</code> ایجاد می‌کند.</p>
+
+<p><code>origin</code> نام خاص یا جادویی نیست.<br>
+فقط یک Convention است.</p>
+
+<p>می‌توانست هر نام دیگری باشد.</p>
+
+<p>مشاهده Remoteها:</p>
+
+<pre><code>git remote -v</code></pre>
+
+<hr>
+
+<h2>افزودن Remote</h2>
+
+<pre><code>git remote add origin https://github.com/user/project.git</code></pre>
+
+<p>اکنون Repository محلی به یک مخزن خارجی متصل شده است.</p>
+
+<hr>
+
+<h2>Push چیست؟</h2>
+
+<p>Push یعنی:</p>
+<p>ارسال Commitهای محلی به Remote.</p>
+
+<pre><code>git push origin main</code></pre>
+
+<p>Git بررسی می‌کند که تاریخچه سازگار باشد، سپس تغییرات را منتقل می‌کند.</p>
+
+<hr>
+
+<h2>Pull چیست؟</h2>
+
+<p>Pull یعنی:</p>
+<p>دریافت تغییرات از Remote و ادغام آن با Branch فعلی.</p>
+
+<pre><code>git pull origin main</code></pre>
+
+<p>در واقع:</p>
+<p><strong>Pull = Fetch + Merge</strong></p>
+
+<hr>
+
+<h2>Fetch چیست؟</h2>
+
+<pre><code>git fetch origin</code></pre>
+
+<p>Fetch تغییرات را دریافت می‌کند،<br>
+اما آن‌ها را وارد Branch فعلی نمی‌کند.</p>
+
+<p>Fetch ایمن‌تر از Pull است چون ادغام خودکار انجام نمی‌دهد.</p>
+
+<hr>
+
+<h2>upstream چیست؟</h2>
+
+<p>وقتی برای اولین بار Push می‌کنید:</p>
+
+<pre><code>git push -u origin main</code></pre>
+
+<p>با <code>-u</code> یک رابطه Tracking ایجاد می‌شود.</p>
+
+<p>از این پس می‌توانید فقط بنویسید:</p>
+
+<pre><code>git push
+git pull</code></pre>
+
+<p>Branch محلی می‌داند به کدام Branch در Remote متصل است.</p>
+
+<p>این اتصال را <strong>upstream</strong> می‌نامند.</p>
+
+<hr>
+
+<h2>Force Push</h2>
+
+<pre><code>git push --force</code></pre>
+
+<p>یا:</p>
+
+<pre><code>git push -f</code></pre>
+
+<p>این دستور تاریخچه Remote را بازنویسی می‌کند.</p>
+
+<p><strong>خطرناک است.</strong></p>
+
+<p>اگر تیمی کار می‌کنید و دیگران Commit زده باشند،
+Force Push می‌تواند تاریخچه آن‌ها را نابود کند.</p>
+
+<p>نسخه ایمن‌تر:</p>
+
+<pre><code>git push --force-with-lease</code></pre>
+
+<p>این دستور فقط در صورتی Force می‌کند که Remote تغییری نکرده باشد.</p>
+
+<hr>
+
+<h2>حذف Branch در Remote</h2>
+
+<pre><code>git push origin --delete feature-login</code></pre>
+
+<p>Branch از سرور حذف می‌شود.</p>
+
+<hr>
+
+<h2>Clone چیست؟</h2>
+
+<pre><code>git clone https://github.com/user/project.git</code></pre>
+
+<p>Clone:</p>
+
+<ul>
+    <li>Repository را دانلود می‌کند</li>
+    <li>Remote به نام origin می‌سازد</li>
+    <li>Branch پیش‌فرض را Checkout می‌کند</li>
+</ul>
+
+<p>Clone ترکیبی از:</p>
+
+<ul>
+    <li>init</li>
+    <li>remote add</li>
+    <li>fetch</li>
+    <li>checkout</li>
+</ul>
+
+<p>است.</p>
+
+<hr>
+
+<h2>مدل ذهنی Remote</h2>
+
+<ul>
+    <li><strong>Local Repository</strong> → نسخه شخصی شما</li>
+    <li><strong>Remote Repository</strong> → نسخه اشتراکی تیم</li>
+</ul>
+
+<ul>
+    <li><strong>Push</strong> → ارسال تغییرات</li>
+    <li><strong>Fetch</strong> → دریافت تغییرات</li>
+    <li><strong>Pull</strong> → دریافت + ادغام</li>
+</ul>
+
+<p>Remote هیچ چیز جادویی ندارد.<br>
+فقط یک Repository دیگر است که از طریق شبکه به آن متصل می‌شوید.</p>
+
+<hr>
+
+<h2>بهترین رویکرد حرفه‌ای</h2>
+
+<ul>
+    <li>قبل از شروع کار: Pull یا Fetch</li>
+    <li>هنگام اتمام Feature: Push</li>
+    <li>هرگز Force Push روی Branch مشترک</li>
+    <li>Branchهای قدیمی را حذف کنید</li>
+    <li>از Pull Request برای Merge استفاده کنید (در پلتفرم‌های میزبانی)</li>
+</ul>
+
+<hr>
+
+<h2>نتیجه</h2>
+
+<p>اکنون می‌توانید:</p>
+
+<ul>
+    <li>Remote تعریف کنید</li>
+    <li>Push و Pull انجام دهید</li>
+    <li>Fetch را درک کنید</li>
+    <li>upstream تنظیم کنید</li>
+    <li>Force Push را ایمن مدیریت کنید</li>
+    <li>تاریخچه را بین Local و Remote هماهنگ کنید</li>
+</ul>
+
+<p>در فصل بعد وارد موضوع همکاری تیمی و Workflowهای حرفه‌ای می‌شویم.</p>
+
+</body>
+</html>

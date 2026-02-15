@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Installing Git</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+<h1>10 — Professional Workflow (End-to-End Scenario)</h1>
+
+<p>در این فصل یک سناریوی واقعی تیمی را از ابتدا تا انتشار نسخه نهایی اجرا می‌کنیم.</p>
+<p><strong>هدف:</strong> اتصال تمام مفاهیم دوره در یک جریان عملی.</p>
+
+<hr>
+
+<h2>سناریو</h2>
+
+<p>یک تیم سه‌نفره در حال توسعه یک Feature جدید برای پروژه است.</p>
+
+<p>پروژه دارای:</p>
+
+<ul>
+    <li>Branch اصلی: <code>main</code></li>
+    <li>نسخه پایدار فعلی: <code>v1.2.0</code></li>
+</ul>
+
+<p><strong>هدف:</strong><br>
+افزودن سیستم احراز هویت جدید.</p>
+
+<hr>
+
+<h2>مرحله 1 — همگام‌سازی با تیم</h2>
+
+<p>ابتدا آخرین تغییرات را دریافت می‌کنیم:</p>
+
+<pre><code>git checkout main
+git pull origin main</code></pre>
+
+<p>همیشه قبل از شروع کار، Branch اصلی باید به‌روز باشد.</p>
+
+<hr>
+
+<h2>مرحله 2 — ساخت Feature Branch</h2>
+
+<pre><code>git switch -c feature/auth-system</code></pre>
+
+<p><strong>اصل حرفه‌ای:</strong></p>
+<p>یک Branch = یک هدف مشخص</p>
+
+<hr>
+
+<h2>مرحله 3 — توسعه و Commitهای هدفمند</h2>
+
+<p>در طول توسعه:</p>
+
+<pre><code>git add .
+git commit -m "Add authentication service structure"
+
+git commit -m "Implement JWT validation"</code></pre>
+
+<p>Commitها باید:</p>
+
+<ul>
+    <li>کوچک</li>
+    <li>مشخص</li>
+    <li>معنادار</li>
+</ul>
+
+<p>باشند.</p>
+
+<hr>
+
+<h2>مرحله 4 — Push و ایجاد Pull Request</h2>
+
+<pre><code>git push -u origin feature/auth-system</code></pre>
+
+<p>سپس در پلتفرم میزبانی:</p>
+
+<ul>
+    <li>ایجاد Pull Request</li>
+    <li>درخواست Code Review</li>
+    <li>بررسی CI/CD</li>
+</ul>
+
+<hr>
+
+<h2>مرحله 5 — به‌روزرسانی Branch در صورت تغییر main</h2>
+
+<p>اگر در این فاصله main تغییر کرده باشد:</p>
+
+<pre><code>git fetch origin
+git rebase origin/main</code></pre>
+
+<p>یا:</p>
+
+<pre><code>git merge origin/main</code></pre>
+
+<p>تیم باید یک استراتژی ثابت داشته باشد:</p>
+<p><strong>Rebase-based یا Merge-based</strong></p>
+
+<p><strong>Consistency مهم‌تر از انتخاب استراتژی است.</strong></p>
+
+<hr>
+
+<h2>مرحله 6 — Merge به main</h2>
+
+<p>پس از تأیید:</p>
+
+<ul>
+    <li>Merge (معمولاً با Squash یا <code>--no-ff</code>)</li>
+    <li>حذف Feature Branch</li>
+</ul>
+
+<pre><code>git branch -d feature/auth-system
+git push origin --delete feature/auth-system</code></pre>
+
+<hr>
+
+<h2>مرحله 7 — انتشار نسخه جدید</h2>
+
+<p>پس از تکمیل Featureها:</p>
+
+<pre><code>git checkout main
+git tag v1.3.0
+git push origin v1.3.0</code></pre>
+
+<p>Tag نشان‌دهنده یک نسخه پایدار است.</p>
+
+<hr>
+
+<h2>چرخه کامل حرفه‌ای</h2>
+
+<p>
+Pull<br>
+→ Branch<br>
+→ Develop<br>
+→ Commit<br>
+→ Push<br>
+→ Pull Request<br>
+→ Review<br>
+→ Merge<br>
+→ Tag<br>
+→ Release
+</p>
+
+<p>این چرخه پایه‌ی توسعه حرفه‌ای در Git است.</p>
+
+<hr>
+
+<h2>اشتباهات رایج در تیم‌ها</h2>
+
+<ul>
+    <li>Commitهای بزرگ و نامشخص</li>
+    <li>Branchهای طولانی‌مدت</li>
+    <li>Force Push روی Branch مشترک</li>
+    <li>Merge بدون Review</li>
+    <li>نداشتن Convention ثابت</li>
+</ul>
+
+<hr>
+
+<h2>مدل نهایی ذهنی</h2>
+
+<p>Git یک گراف از Snapshotهاست.</p>
+
+<p><strong>Workflow حرفه‌ای یعنی:</strong></p>
+
+<p>کنترل حرکت در این گراف<br>
+به‌صورت هماهنگ، قابل ردیابی و پایدار.</p>
+
+<hr>
+
+<h2>پایان دوره</h2>
+
+<p>اکنون شما:</p>
+
+<ul>
+    <li>معماری Git را درک می‌کنید</li>
+    <li>Branch و Merge را حرفه‌ای مدیریت می‌کنید</li>
+    <li>Remote و همکاری تیمی را می‌شناسید</li>
+    <li>Workflow سازمانی را اجرا می‌کنید</li>
+    <li>نسخه منتشر می‌کنید</li>
+</ul>
+
+<p>Git دیگر برای شما مجموعه‌ای از دستورات نیست.</p>
+
+<p><strong>یک سیستم کنترل تاریخچه قابل مهندسی است.</strong></p>
+
+</body>
+</html>

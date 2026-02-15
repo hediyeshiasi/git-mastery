@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Installing Git</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+<h1>09 — Collaboration & Workflow</h1>
+
+<p>Git برای همکاری طراحی شده است.</p>
+<p>در این فصل یاد می‌گیریم چگونه چند توسعه‌دهنده به‌صورت همزمان روی یک پروژه کار می‌کنند بدون اینکه تاریخچه تخریب شود.</p>
+
+<hr>
+
+<h2>Pull Request چیست؟</h2>
+
+<p><strong>Pull Request (PR)</strong> مکانیزمی در پلتفرم‌هایی مثل GitHub است.</p>
+
+<p>هدف آن:</p>
+
+<ul>
+    <li>پیشنهاد ادغام یک Branch</li>
+    <li>بررسی کد (Code Review)</li>
+    <li>بحث و اصلاح قبل از Merge</li>
+</ul>
+
+<p>Pull Request خودِ Git نیست.<br>
+ویژگی‌ای در سرویس‌های میزبانی Git است.</p>
+
+<hr>
+
+<h2>فرآیند استاندارد همکاری</h2>
+
+<ol>
+    <li>Pull آخرین تغییرات از <code>main</code></li>
+    <li>ساخت Branch جدید</li>
+    <li>توسعه Feature</li>
+    <li>Push Branch</li>
+    <li>ایجاد Pull Request</li>
+    <li>Code Review</li>
+    <li>Merge به <code>main</code></li>
+    <li>حذف Branch</li>
+</ol>
+
+<p>این الگو در اکثر تیم‌های حرفه‌ای استفاده می‌شود.</p>
+
+<hr>
+
+<h2>Code Review</h2>
+
+<p>قبل از Merge:</p>
+
+<ul>
+    <li>کد بررسی می‌شود</li>
+    <li>استانداردها چک می‌شود</li>
+    <li>باگ‌ها شناسایی می‌شود</li>
+    <li>معماری ارزیابی می‌شود</li>
+</ul>
+
+<p><strong>هدف Review:</strong><br>
+افزایش کیفیت و کاهش ریسک.</p>
+
+<hr>
+
+<h2>استراتژی‌های Workflow</h2>
+
+<h3>1️⃣ Git Flow</h3>
+
+<p>دارای Branchهای مشخص:</p>
+
+<ul>
+    <li><strong>main</strong> (نسخه پایدار)</li>
+    <li><strong>develop</strong> (توسعه فعال)</li>
+    <li><strong>feature/*</strong></li>
+    <li><strong>release/*</strong></li>
+    <li><strong>hotfix/*</strong></li>
+</ul>
+
+<p>مناسب پروژه‌های بزرگ با چرخه انتشار رسمی.</p>
+
+<hr>
+
+<h3>2️⃣ Trunk Based Development</h3>
+
+<p>فقط یک Branch اصلی (معمولاً main)</p>
+
+<p>Featureها کوتاه‌مدت هستند و سریع Merge می‌شوند.</p>
+
+<p>مناسب تیم‌های سریع و Continuous Deployment.</p>
+
+<hr>
+
+<h3>3️⃣ Feature Branch Workflow</h3>
+
+<p>هر Feature در Branch جدا<br>
+پس از تکمیل → Merge به main</p>
+
+<p>ساده، رایج و قابل مدیریت.</p>
+
+<hr>
+
+<h2>Release Strategy</h2>
+
+<p>برای نسخه‌دهی از Tag استفاده می‌شود:</p>
+
+<pre><code>git tag v1.0.0
+git push origin v1.0.0</code></pre>
+
+<p>Tag یک اشاره‌گر ثابت به یک Commit مشخص است.</p>
+
+<p>برای نسخه‌های پایدار استفاده می‌شود.</p>
+
+<hr>
+
+<h2>Semantic Versioning</h2>
+
+<p>الگوی رایج نسخه‌دهی:</p>
+
+<p><strong>MAJOR.MINOR.PATCH</strong></p>
+
+<p>مثال:</p>
+
+<p><strong>1.4.2</strong></p>
+
+<ul>
+    <li><strong>MAJOR</strong> → تغییرات ناسازگار</li>
+    <li><strong>MINOR</strong> → افزودن قابلیت</li>
+    <li><strong>PATCH</strong> → اصلاح باگ</li>
+</ul>
+
+<hr>
+
+<h2>اصول حرفه‌ای همکاری</h2>
+
+<ul>
+    <li>Commitهای کوچک و هدفمند</li>
+    <li>Branchهای کوتاه‌مدت</li>
+    <li>Pull Request اجباری</li>
+    <li>عدم Force Push روی Branch مشترک</li>
+    <li>تاریخچه خوانا و معنادار</li>
+</ul>
+
+<p><strong>Consistency مهم‌تر از پیچیدگی Workflow است.</strong></p>
+
+<hr>
+
+<h2>مدل ذهنی نهایی</h2>
+
+<p>Git ابزار ذخیره‌سازی نیست.<br>
+سیستم مدیریت تاریخچه برای همکاری است.</p>
+
+<ul>
+    <li><strong>Branch</strong> → ایزوله‌سازی</li>
+    <li><strong>Merge</strong> → ترکیب</li>
+    <li><strong>Remote</strong> → اشتراک</li>
+    <li><strong>Pull Request</strong> → کنترل کیفیت</li>
+</ul>
+
+<p>این چهار ستون همکاری حرفه‌ای در Git هستند.</p>
+
+<hr>
+
+<h2>نتیجه</h2>
+
+<p>اکنون می‌توانید:</p>
+
+<ul>
+    <li>در تیم کار کنید</li>
+    <li>Pull Request ایجاد کنید</li>
+    <li>Workflow مناسب انتخاب کنید</li>
+    <li>نسخه منتشر کنید</li>
+    <li>تاریخچه تمیز نگه دارید</li>
+</ul>
+
+<p>در فصل بعد به جمع‌بندی نهایی و طراحی Workflow عملی پروژه می‌رسیم.</p>
+
+</body>
+</html>
