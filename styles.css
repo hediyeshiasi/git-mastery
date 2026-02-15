@@ -315,14 +315,7 @@ footer {
   }
 
 }
-body {
-    direction: rtl;
-    text-align: right;
-}
 
-ul li {
-    margin: 15px 0;
-}
 
 ul li a {
     display: inline-block;
@@ -339,4 +332,3 @@ ul li a:hover {
     background-color: hsl(317, 93%, 40%);
     transform: scale(1.05);
 }
-
